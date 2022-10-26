@@ -1,0 +1,10 @@
+<CentralSection>
+  <div className={styles.centralHeader}>
+    We provide quality residential Solar PV and energy storage solutions for
+    both grid-tied and off-grid applications.
+  </div>
+  <div className={styles.centralHeader}>
+    <b>Helio Photovoltaic</b> is based primarily in the lower mainland, but can
+    also service Vancouver Island, the Okanagan, and the Cariboo/Chilcotin.
+  </div>
+</CentralSection>;

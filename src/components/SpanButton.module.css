@@ -1,0 +1,11 @@
+.spanButton{
+    height: 3rem;
+    width: var(--centralSpanWidth);
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-items: center;
+    border-radius: 3px;
+    
+}

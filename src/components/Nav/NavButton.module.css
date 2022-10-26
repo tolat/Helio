@@ -1,0 +1,23 @@
+.navButton {
+  margin: 1rem 2rem 0 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: all 0.17s;
+  animation-timing-function: fade-in-out 1s;
+  border-radius: 3px;
+}
+
+.navButton:hover {
+  cursor: pointer;
+  transition: all 0.17s;
+  animation-timing-function: fade-in-out 1s;
+  font-weight: bold;
+}
+
+.navButtonBlack {
+  color: white;
+  background-color: black;
+}

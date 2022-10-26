@@ -1,0 +1,5 @@
+.centralTile {
+  padding: 1rem;
+  display: flex;
+  flex-grow: 1;
+}

@@ -1,5 +1,27 @@
 .centralTile {
   padding: 1rem;
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.centralTileHeader {
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.centralTileIncentive {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(60, 163, 60);
+  margin: 1rem 0 0 0.5rem;
+  font-weight: bold;
+}
+
+.centralTileText {
+  text-align: justify;
+  margin: 1rem 0 0 0.5rem;
+  font-size: 1rem;
 }

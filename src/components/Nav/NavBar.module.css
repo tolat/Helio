@@ -12,11 +12,7 @@
 }
 
 .navbarLogo {
-  background-image: url("../../images/Helio_logo_nobg.png");
-  background-size: contain;
   height: 100%;
-  width: 15rem;
-  background-repeat: no-repeat;
   margin-left: 2rem;
 }
 

@@ -1,61 +1,75 @@
 import styles from "./App.module.css";
 import NavBar from "./components/Nav/NavBar";
 import FullWidthSection from "./components/FullWidthSection";
+import fullWidthStyles from "./components/FullWidthSection.module.css";
 import CentralSection from "./components/CentralSection";
 import BlackFade from "./components/BlackFade";
 import CentralTile from "./components/CentralTile";
-import tileStyles from "./components/CentralTile.module.css";
-import greenerHomesPath from "./images/GH-journey-map.jpeg";
-import netMeteringGraphic from "./images/netmetering_graphic.jpg";
+import centralTileStyles from "./components/CentralTile.module.css";
+
+import greenerHomesPath from "./images/greener_homes_graphic.jpg";
+import netMeteringGraphic from "./images/netmetering_graphic2.png";
 import nabcepSeal from "./images/pv_assoc_seal.png";
+import banner2 from "./images/solarspan1.jpg";
+import banner1 from "./images/solarspan3.jpg";
+import banner1_s from "./images/solarspan3_small.jpg";
+import banner1_l from "./images/solarspan3_large.jpg";
 
 function App() {
+  const globals = {
+    wSmall: 1100,
+    wLarge: 1600,
+  };
+
   return (
     <div className={styles.App}>
       <NavBar />
       <div className={styles.navbarSpacer}></div>
-      <div className={styles.bannerContainer}>
-        <div className={styles.bannerText}>
-          Residential solar installation<br></br>
-          Pre-wiring and consultation <br></br>
-          Off-grid and grid-tied applications <br></br>
-        </div>
-        <img
-          className={styles.bannerNabcep}
-          src={nabcepSeal}
-          alt="nabcep seal"
-        />
-      </div>
-      <BlackFade>
-        <FullWidthSection>
-          <div className={styles.banner}></div>
-        </FullWidthSection>
-      </BlackFade>
+      <FullWidthSection>
+        <BlackFade
+          backgroundImages={[banner1, banner1_s, banner1_l]}
+          backgroundOpacity="0.7"
+          globals={globals}>
+          <div className={styles.bannerContainer}>
+            <div className={styles.bannerText}>
+              Residential solar installation<br></br>
+              Pre-wiring and consultation<br></br>
+              Off-grid and grid-tied projects<br></br>
+            </div>
+            <img
+              className={styles.bannerNabcep}
+              src={nabcepSeal}
+              alt="nabcep seal"
+            />
+          </div>
+        </BlackFade>
+      </FullWidthSection>
       <CentralSection>
         <CentralTile>
-          <div className={tileStyles.centralTileHeader}>Solar Incentives</div>
-          <div className={tileStyles.centralTileIncentive}>
+          <div className={centralTileStyles.centralTileHeader}>
+            Solar Incentives
+          </div>
+          <div className={centralTileStyles.centralTileIncentive}>
             $5,000 Greener Homes Grant
           </div>
-          <div className={tileStyles.centralTileText}>
+          <div className={centralTileStyles.centralTileText}>
             The Canada greener homes grant provides Canadians with $1 per kW of
-            Solar installed, up to a maximum of $5,000. To be eligible for the
-            grant, you must own your home, and it must be your primary
-            residence.
+            Solar installed, up to a maximum of $5,000. To receive the grant you
+            must own your home, and it must be your primary residence.
           </div>
-          <div className={tileStyles.centralTileIncentive}>
+          <div className={centralTileStyles.centralTileIncentive}>
             $40,000 Interest-Free Greener Homes Loan
           </div>
-          <div className={tileStyles.centralTileText}>
+          <div className={centralTileStyles.centralTileText}>
             In addition to the grant, the Greener Homes Program and the CMHC are
             offering loans of up to $40,000 for energy efficient Home retrofits
             <br />
             <br />
-            To be eligible for the Grant or the loan, homes must receive an
+            To be eligible for the grant or the loan, homes must receive an
             energy efficiency inspection from an EnerGuide accredited company
             before any retrofits begin - We can help you get in touch with an
-            EnerGuide certified inspector! See the Greener Homes Program roadmap
-            for homeowners below: <br />
+            EnerGuide certified inspector!
+            <br />
             <br />
           </div>
           <img src={greenerHomesPath} alt="greener homes path graphic" />
@@ -70,8 +84,10 @@ function App() {
           </div>
         </CentralTile>
         <CentralTile>
-          <div className={tileStyles.centralTileHeader}>BC Net Metering</div>
-          <div className={tileStyles.centralTileText}>
+          <div className={centralTileStyles.centralTileHeader}>
+            BC Net Metering
+          </div>
+          <div className={centralTileStyles.centralTileText}>
             Through BC Hydro's Net Metering program, you can use the energy you
             produce with solar to reduce your energy bill! For every kWh of
             energy you produce with solar, you receive a bill credit that you
@@ -83,11 +99,15 @@ function App() {
             Accumulated credits carry over month to month until you hit you
             anniversary date (typically March), when any unused credits are
             lost. When designing you solar system, we aim for a "100% offset" -
-            making sure you maximise your solar array while ensuring when you
-            don't end the year with unused credits.
+            making sure you maximise your solar array while ensuring you don't
+            end the year with unused credits.
           </div>
-          <img src={netMeteringGraphic} alt="Net Metering Graphic" />
-          <div>
+          <img
+            style={{ margin: "1.5rem 0 1.5rem 0" }}
+            src={netMeteringGraphic}
+            alt="Net Metering Graphic"
+          />
+          <div style={{ justifySelf: "stretch" }}>
             Click{" "}
             <a href="https://app.bchydro.com/accounts-billing/electrical-connections/net-metering.html">
               HERE
@@ -96,6 +116,27 @@ function App() {
           </div>
         </CentralTile>
       </CentralSection>
+      <BlackFade
+        backgroundImages={[banner2, banner2, banner2]}
+        backgroundOpacity="0.65"
+        globals={globals}>
+        <FullWidthSection>
+          <div
+            className={fullWidthStyles.header}
+            style={{ color: "white", fontSize: "2.5rem" }}>
+            Solar <b>Solutions</b>{" "}
+          </div>
+          <div
+            className={fullWidthStyles.text}
+            style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
+            We offer complete turnkey solar solutions for grid-tied and off-grid
+            solar projects. Finding a line of solar products that fits your
+            project and budget is important - we offer a variety of product
+            tiers that can cover all your home energy needs.
+          </div>
+          <div></div>
+        </FullWidthSection>
+      </BlackFade>
     </div>
   );
 }

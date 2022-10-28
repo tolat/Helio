@@ -9,7 +9,7 @@ const NavBar = (props) => {
       <div className={styles.buttonContainer}>
         <NavButton text="About" />
         <NavButton text="FAQ" />
-        <NavButton text="Request Free Quote" black="true" />
+        <NavButton text="Free Quote" black="true" />
       </div>
     </div>
   );

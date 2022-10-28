@@ -1,5 +1,4 @@
 import styles from "./CentralSection.module.css";
-import FullWidthSection from "./FullWidthSection";
 
 const CentralSection = (props) => {
   return (

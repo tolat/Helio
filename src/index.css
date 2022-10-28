@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
@@ -14,8 +15,9 @@ code {
 
 :root {
   --navBarHeight: 8rem;
-  --centralSpanWidth: 80rem;
+  --centralSpanWidth: 90rem;
   --buttonSecondary: rgb(40, 134, 206);
+  --smallWidthBreakpoint: 1100px;
 }
 
 .pointer-hover:hover {

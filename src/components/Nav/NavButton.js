@@ -1,13 +1,11 @@
 import styles from "./NavButton.module.css";
 
 const NavButton = (props) => {
-  let localStyle = {};
-  if (props.black) {
-    localStyle = { color: "white", backgroundColor: "black" };
-  }
-
   return (
-    <div className={styles.navButton} style={localStyle}>
+    <div
+      className={`${styles.navButton} ${
+        props.black ? styles.navButtonBlack : ""
+      }`}>
       <div>{props.text}</div>
     </div>
   );

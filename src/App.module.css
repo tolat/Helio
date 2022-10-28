@@ -29,14 +29,44 @@
   height: var(--navBarHeight);
 }
 
-@media (max-width: 1100px) {
-  .banner {
-    background-image: url("./images/solarspan3_small.jpg");
-  }
+.productTileContainer {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5rem;
+  width: 100%;
+  align-items: center;
 }
 
-@media (min-width: 1560px) {
-  .banner {
-    background-image: url("./images/solarspan3_large.jpg");
-  }
+.productTileHeader {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  margin-top: 1rem;
+}
+
+.productTile {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.productTileImage {
+  max-width: 13rem;
+  padding: 1rem 2rem 0rem 2rem;
+  box-sizing: border-box;
+}
+
+.productTileText {
+  line-height: 1.3rem;
+  padding: 1.5rem;
+  color: black;
 }

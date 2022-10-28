@@ -6,6 +6,8 @@ import CentralSection from "./components/CentralSection";
 import BlackFade from "./components/BlackFade";
 import CentralTile from "./components/CentralTile";
 import centralTileStyles from "./components/CentralTile.module.css";
+import ProductTile from "./components/ProductTile";
+import productTileStyles from "./components/ProductTile.module.css";
 
 import greenerHomesPath from "./images/greener_homes_graphic.jpg";
 import netMeteringGraphic from "./images/netmetering_graphic2.png";
@@ -14,6 +16,9 @@ import banner2 from "./images/solarspan1.jpg";
 import banner1 from "./images/solarspan3.jpg";
 import banner1_s from "./images/solarspan3_small.jpg";
 import banner1_l from "./images/solarspan3_large.jpg";
+import stringInvIcon from "./images/panels_string.png";
+import microInvIcon from "./images/panels_micro.png";
+import batteryIcon from "./images/battery.png";
 
 function App() {
   const globals = {
@@ -129,12 +134,34 @@ function App() {
           <div
             className={fullWidthStyles.text}
             style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
-            We offer complete turnkey solar solutions for grid-tied and off-grid
-            solar projects. Finding a line of solar products that fits your
-            project and budget is important - we offer a variety of product
-            tiers that can cover all your home energy needs.
+            We offer a complete suite of solar solutions for grid-tied and
+            off-grid solar projects. Finding a line of solar products that fits
+            your project and budget is important - our variety of product tiers
+            aims to cover all your home energy needs!
           </div>
-          <div></div>
+          <div className={productTileStyles.tileGridContainer}>
+            <ProductTile
+              header={"String Inverters"}
+              img={stringInvIcon}
+              text={
+                "String inverters combine and invert all the DC energy produced by a solar array in one unit. Although this is the older inverter technology, it has good reliability, great product support, and excellent serviceability, and comes with the most attractive pricetag."
+              }
+            />
+            <ProductTile
+              header={"Microinverters"}
+              img={microInvIcon}
+              text={
+                "Miroinverters invert from DC to AC at each individual panel. This is the industry standard for the best inverter technology, providing excellent solar yield and shading compensation. Due to multiple points of faliure, microinverters drastically lessen array downtime in case of malfunction."
+              }
+            />
+            <ProductTile
+              header={"Energy Storage"}
+              img={batteryIcon}
+              text={
+                "Tired of losing power during outages? A battery backup can help you have continuous power for some or all of your home loads when the grid is down. Storage options are available for grid tied and off grid, and come in Flooded Lead-Acid, Absorbed Glass Mat and Lithium options."
+              }
+            />
+          </div>
         </FullWidthSection>
       </BlackFade>
     </div>

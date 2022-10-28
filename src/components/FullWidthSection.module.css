@@ -17,4 +17,11 @@
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
+  line-height: 2rem;
+}
+
+.grid {
+  display: grid;
+  padding: 0 3rem 2rem 3rem;
+  width: 100%;
 }

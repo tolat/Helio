@@ -15,7 +15,7 @@ code {
 
 :root {
   --navBarHeight: 8rem;
-  --centralSpanWidth: 90rem;
+  --centralSpanWidth: 100rem;
   --buttonSecondary: rgb(40, 134, 206);
   --smallWidthBreakpoint: 1100px;
 }

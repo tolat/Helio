@@ -20,21 +20,36 @@ import stringInvIcon from "./images/panels_string.png";
 import microInvIcon from "./images/panels_micro.png";
 import batteryIcon from "./images/battery.png";
 
+import React, { useState } from "react";
+import { useWindowSize } from "usehooks-ts";
+
 function App() {
-  const globals = {
-    wSmall: 1100,
-    wLarge: 1600,
+  const wSmall = 1100;
+  const wLarge = 1600;
+  const { width } = useWindowSize();
+
+  // Stately variables
+  const [banner1Background, setBanner1Background] = useState(banner1);
+  const [productTilesDynaStyling, setProductTilesDynaStyling] = useState([]);
+
+  // Function to use stately variables to update things that have changes based on
+  // small medium and alrge window sizes
+  const toggleSmallMedLarge = (sml, med, lrg, fn) => {
+    width < wSmall ? fn(sml) : width > wLarge ? fn(lrg) : fn(med);
   };
+
+  // Handles resize for the app
+  const handleResize = (e) => {
+    toggleSmallMedLarge(banner1_s, banner1, banner1_l, setBanner1Background);
+  };
+  window.addEventListener("resize", handleResize);
 
   return (
     <div className={styles.App}>
       <NavBar />
       <div className={styles.navbarSpacer}></div>
       <FullWidthSection>
-        <BlackFade
-          backgroundImages={[banner1, banner1_s, banner1_l]}
-          backgroundOpacity="0.7"
-          globals={globals}>
+        <BlackFade backgroundImage={banner1Background} backgroundOpacity="0.7">
           <div className={styles.bannerContainer}>
             <div className={styles.bannerText}>
               Residential solar installation<br></br>
@@ -52,7 +67,7 @@ function App() {
       <CentralSection>
         <CentralTile>
           <div className={centralTileStyles.centralTileHeader}>
-            Solar Incentives
+            Solar <b>Incentives</b>
           </div>
           <div className={centralTileStyles.centralTileIncentive}>
             $5,000 Greener Homes Grant
@@ -90,7 +105,7 @@ function App() {
         </CentralTile>
         <CentralTile>
           <div className={centralTileStyles.centralTileHeader}>
-            BC Net Metering
+            BC <b>Net Metering</b>
           </div>
           <div className={centralTileStyles.centralTileText}>
             Through BC Hydro's Net Metering program, you can use the energy you
@@ -121,25 +136,27 @@ function App() {
           </div>
         </CentralTile>
       </CentralSection>
-      <BlackFade
-        backgroundImages={[banner2, banner2, banner2]}
-        backgroundOpacity="0.65"
-        globals={globals}>
+      <BlackFade backgroundImage={banner2} backgroundOpacity="0.65">
         <FullWidthSection>
-          <div
-            className={fullWidthStyles.header}
-            style={{ color: "white", fontSize: "2.5rem" }}>
-            Solar <b>Solutions</b>{" "}
+          <div style={{ maxWidth: "80rem" }}>
+            <div
+              className={fullWidthStyles.header}
+              style={{ color: "white", fontSize: "2.5rem" }}>
+              Solar <b>Solutions</b>{" "}
+            </div>
+            <div
+              className={fullWidthStyles.text}
+              style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
+              We offer a complete suite of solar solutions for grid-tied and
+              off-grid solar projects. Finding a line of solar products that
+              fits your project and budget is important - our variety of product
+              tiers aims to cover all your home energy needs!
+            </div>
           </div>
           <div
-            className={fullWidthStyles.text}
-            style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
-            We offer a complete suite of solar solutions for grid-tied and
-            off-grid solar projects. Finding a line of solar products that fits
-            your project and budget is important - our variety of product tiers
-            aims to cover all your home energy needs!
-          </div>
-          <div className={productTileStyles.tileGridContainer}>
+            className={productTileStyles.tileGridContainer}
+            dynamicStyles={productTilesDynaStyling}
+            style={{ maxWidth: "80rem" }}>
             <ProductTile
               header={"String Inverters"}
               img={stringInvIcon}
@@ -151,7 +168,7 @@ function App() {
               header={"Microinverters"}
               img={microInvIcon}
               text={
-                "Miroinverters invert from DC to AC at each individual panel. This is the industry standard for the best inverter technology, providing excellent solar yield and shading compensation. Due to multiple points of faliure, microinverters drastically lessen array downtime in case of malfunction."
+                "Miroinverters invert energy from DC to AC for each panel individually. This is the industry standard for the best inverter technology, providing excellent solar yield and shading compensation. Due to multiple points of faliure, microinverters drastically lessen array downtime in case of malfunction."
               }
             />
             <ProductTile

@@ -30,10 +30,11 @@ function App() {
 
   // Stately variables
   const [banner1Background, setBanner1Background] = useState(banner1);
-  const [productTilesDynaStyling, setProductTilesDynaStyling] = useState([]);
+  const [PTContainerFlexDirection, setPTContainerFlexDirection] =
+    useState("row");
+  const [PTWidth, setPTWidth] = useState("25%");
 
-  // Function to use stately variables to update things that have changes based on
-  // small medium and alrge window sizes
+  // Function to use stately variables to update things that have changes based onsmall medium and alrge window sizes
   const toggleSmallMedLarge = (sml, med, lrg, fn) => {
     width < wSmall ? fn(sml) : width > wLarge ? fn(lrg) : fn(med);
   };
@@ -41,11 +42,18 @@ function App() {
   // Handles resize for the app
   const handleResize = (e) => {
     toggleSmallMedLarge(banner1_s, banner1, banner1_l, setBanner1Background);
+    toggleSmallMedLarge("column", "row", "row", setPTContainerFlexDirection);
+    toggleSmallMedLarge("80%", "25%", "25%", setPTWidth);
   };
   window.addEventListener("resize", handleResize);
 
+  // App onload function
+  const onLoad = (e) => {
+    handleResize(e);
+  };
+
   return (
-    <div className={styles.App}>
+    <div className={styles.App} onLoad={onLoad}>
       <NavBar />
       <div className={styles.navbarSpacer}></div>
       <FullWidthSection>
@@ -111,16 +119,16 @@ function App() {
             Through BC Hydro's Net Metering program, you can use the energy you
             produce with solar to reduce your energy bill! For every kWh of
             energy you produce with solar, you receive a bill credit that you
-            can use against your actual energy consumption at the end of each
-            month. If you produced more from solar than you used that month, the
-            consumption portion of your bill will be zero, and the extra credits
-            will carry over to the next billing cycle.
+            can use against your actual energy consumption at month's end. If
+            you produced more energy from solar than you used, the consumption
+            portion of your bill will be zero, and the extra credits will carry
+            over to the next billing cycle.
             <br /> <br />
             Accumulated credits carry over month to month until you hit you
-            anniversary date (typically March), when any unused credits are
-            lost. When designing you solar system, we aim for a "100% offset" -
-            making sure you maximise your solar array while ensuring you don't
-            end the year with unused credits.
+            anniversary date (typically March), when any unused credits arelost.
+            When designing you solar system, we aim for a "100% offset" - making
+            sure you maximise your solar array while ensuring you don't end the
+            year with unused credits.
           </div>
           <img
             style={{ margin: "1.5rem 0 1.5rem 0" }}
@@ -155,16 +163,20 @@ function App() {
           </div>
           <div
             className={productTileStyles.tileGridContainer}
-            dynamicStyles={productTilesDynaStyling}
-            style={{ maxWidth: "80rem" }}>
+            style={{
+              flexDirection: PTContainerFlexDirection,
+              maxWidth: "80rem",
+            }}>
             <ProductTile
+              style={{ width: PTWidth }}
               header={"String Inverters"}
               img={stringInvIcon}
               text={
-                "String inverters combine and invert all the DC energy produced by a solar array in one unit. Although this is the older inverter technology, it has good reliability, great product support, and excellent serviceability, and comes with the most attractive pricetag."
+                "String inverters combine and invert all the DC energy produced by a solar array in one unit. Although they are the older inverter technology, string inverters have good reliability, excellent serviceability, and come with the most attractive pricetag. Ideally suited for project designed to maximise payback period."
               }
             />
             <ProductTile
+              style={{ width: PTWidth }}
               header={"Microinverters"}
               img={microInvIcon}
               text={
@@ -172,6 +184,7 @@ function App() {
               }
             />
             <ProductTile
+              style={{ width: PTWidth }}
               header={"Energy Storage"}
               img={batteryIcon}
               text={

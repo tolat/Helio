@@ -2,7 +2,7 @@ import styles from "./ProductTile.module.css";
 
 const ProductTile = (props) => {
   return (
-    <div className={styles.tile}>
+    <div className={styles.tile} style={props.style}>
       <div className={styles.header}>{props.header}</div>
       <img
         className={styles.image}

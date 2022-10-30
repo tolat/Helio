@@ -1,6 +1,6 @@
 import styles from "./NavBar.module.css";
 import NavButton from "./NavButton";
-import logo from "../../images/Helio_logo_nobg_1.png";
+import logo from "../../images/Helio_logo2_nobg.png";
 
 const NavBar = (props) => {
   return (

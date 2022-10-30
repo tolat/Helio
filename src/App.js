@@ -19,6 +19,7 @@ import banner1_l from "./images/solarspan3_large.jpg";
 import stringInvIcon from "./images/panels_string.png";
 import microInvIcon from "./images/panels_micro.png";
 import batteryIcon from "./images/battery.png";
+import bluetoblackIcon from "./images/bluetoblack.png";
 
 import React, { useState } from "react";
 import { useWindowSize } from "usehooks-ts";
@@ -30,9 +31,9 @@ function App() {
 
   // Stately variables
   const [banner1Background, setBanner1Background] = useState(banner1);
-  const [PTContainerFlexDirection, setPTContainerFlexDirection] =
-    useState("row");
-  const [PTWidth, setPTWidth] = useState("25%");
+  const [PTDisplay, setPTDisplay] = useState("flex");
+  const [PTJustify, setPTJustify] = useState("");
+  const [PTWidth, setPTWidth] = useState("20%");
 
   // Function to use stately variables to update things that have changes based onsmall medium and alrge window sizes
   const toggleSmallMedLarge = (sml, med, lrg, fn) => {
@@ -42,8 +43,9 @@ function App() {
   // Handles resize for the app
   const handleResize = (e) => {
     toggleSmallMedLarge(banner1_s, banner1, banner1_l, setBanner1Background);
-    toggleSmallMedLarge("column", "row", "row", setPTContainerFlexDirection);
-    toggleSmallMedLarge("80%", "25%", "25%", setPTWidth);
+    toggleSmallMedLarge("grid", "flex", "flex", setPTDisplay);
+    toggleSmallMedLarge("center", "", "", setPTJustify);
+    toggleSmallMedLarge("80%", "20%", "20%", setPTWidth);
   };
   window.addEventListener("resize", handleResize);
 
@@ -146,7 +148,7 @@ function App() {
       </CentralSection>
       <BlackFade backgroundImage={banner2} backgroundOpacity="0.65">
         <FullWidthSection>
-          <div style={{ maxWidth: "80rem" }}>
+          <div style={{ maxWidth: "90rem" }}>
             <div
               className={fullWidthStyles.header}
               style={{ color: "white", fontSize: "2.5rem" }}>
@@ -156,23 +158,24 @@ function App() {
               className={fullWidthStyles.text}
               style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
               We offer a complete suite of solar solutions for grid-tied and
-              off-grid solar projects. Finding a line of solar products that
-              fits your project and budget is important - our variety of product
+              off-grid solar projects. Finding a line of solar equipment that
+              fits your vision and budget is important - our variety of product
               tiers aims to cover all your home energy needs!
             </div>
           </div>
           <div
             className={productTileStyles.tileGridContainer}
             style={{
-              flexDirection: PTContainerFlexDirection,
-              maxWidth: "80rem",
+              display: PTDisplay,
+              justifyItems: PTJustify,
+              maxWidth: "90rem",
             }}>
             <ProductTile
               style={{ width: PTWidth }}
               header={"String Inverters"}
               img={stringInvIcon}
               text={
-                "String inverters combine and invert all the DC energy produced by a solar array in one unit. Although they are the older inverter technology, string inverters have good reliability, excellent serviceability, and come with the most attractive pricetag. Ideally suited for project designed to maximise payback period."
+                "String inverters convert all your DC solar energy to AC in one unit. Although they are the older inverter technology, string inverters have good reliability, excellent serviceability, and come with the most attractive pricetag. Ideal for to minimizing your solar payback period."
               }
             />
             <ProductTile
@@ -180,7 +183,7 @@ function App() {
               header={"Microinverters"}
               img={microInvIcon}
               text={
-                "Miroinverters invert energy from DC to AC for each panel individually. This is the industry standard for the best inverter technology, providing excellent solar yield and shading compensation. Due to multiple points of faliure, microinverters drastically lessen array downtime in case of malfunction."
+                "Miroinverters invert energy from DC to AC for each panel individually. This is the industry standard for the best inverter technology, providing excellent solar yield and shading compensation. Additionally, their longer standard lifespan results in greater return on investment."
               }
             />
             <ProductTile
@@ -188,7 +191,15 @@ function App() {
               header={"Energy Storage"}
               img={batteryIcon}
               text={
-                "Tired of losing power during outages? A battery backup can help you have continuous power for some or all of your home loads when the grid is down. Storage options are available for grid tied and off grid, and come in Flooded Lead-Acid, Absorbed Glass Mat and Lithium options."
+                "Tired of losing power during outages? A battery backup can help you have continuous power for some or all of your home loads when the grid is down. We offer Lithium storage options for residential, as well as Flooded Lead-Acid and Absorbed Glass Mat for off-grid."
+              }
+            />
+            <ProductTile
+              style={{ width: PTWidth }}
+              header={"All Black Panels"}
+              img={bluetoblackIcon}
+              text={
+                "Solar panels don't have to affect the aesthetic of your home. With all-black racking and solar panel options, your choice to save on energy can also add a sleek look to your roof. Most panel options are available in black - make sure to specify your colour preference when requesting a quote."
               }
             />
           </div>

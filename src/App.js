@@ -8,6 +8,7 @@ import CentralTile from "./components/CentralTile";
 import centralTileStyles from "./components/CentralTile.module.css";
 import ProductTile from "./components/ProductTile";
 import productTileStyles from "./components/ProductTile.module.css";
+import ProductCarousel from "./components/ProductCarousel";
 
 import greenerHomesPath from "./images/greener_homes_graphic.jpg";
 import netMeteringGraphic from "./images/netmetering_graphic2.png";
@@ -29,11 +30,15 @@ function App() {
   const wLarge = 1600;
   const { width } = useWindowSize();
 
-  // Stately variables
+  // Stately styling variables
   const [banner1Background, setBanner1Background] = useState(banner1);
   const [PTDisplay, setPTDisplay] = useState("flex");
   const [PTJustify, setPTJustify] = useState("");
+  const [CS1FlexDirection, setCS1FlexDirection] = useState("row");
+  const [CS1TileWidth, setCS1TileWidth] = useState("50%");
   const [PTWidth, setPTWidth] = useState("20%");
+  const [productCarouselLogoHeight, setProductCarouselLogoHeight] =
+    useState("4rem");
 
   // Function to use stately variables to update things that have changes based onsmall medium and alrge window sizes
   const toggleSmallMedLarge = (sml, med, lrg, fn) => {
@@ -46,6 +51,9 @@ function App() {
     toggleSmallMedLarge("grid", "flex", "flex", setPTDisplay);
     toggleSmallMedLarge("center", "", "", setPTJustify);
     toggleSmallMedLarge("80%", "20%", "20%", setPTWidth);
+    toggleSmallMedLarge("column", "row", "row", setCS1FlexDirection);
+    toggleSmallMedLarge("100%", "50%", "50%", setCS1TileWidth);
+    toggleSmallMedLarge("4rem", "5rem", "5rem", setProductCarouselLogoHeight);
   };
   window.addEventListener("resize", handleResize);
 
@@ -57,8 +65,7 @@ function App() {
   return (
     <div className={styles.App} onLoad={onLoad}>
       <NavBar />
-      <div className={styles.navbarSpacer}></div>
-      <FullWidthSection>
+      <FullWidthSection style={{ marginTop: "var(--navBarHeight)" }}>
         <BlackFade backgroundImage={banner1Background} backgroundOpacity="0.7">
           <div className={styles.bannerContainer}>
             <div className={styles.bannerText}>
@@ -74,8 +81,8 @@ function App() {
           </div>
         </BlackFade>
       </FullWidthSection>
-      <CentralSection>
-        <CentralTile>
+      <CentralSection style={{ flexDirection: CS1FlexDirection }}>
+        <CentralTile style={{ width: CS1TileWidth }}>
           <div className={centralTileStyles.centralTileHeader}>
             Solar <b>Incentives</b>
           </div>
@@ -113,7 +120,7 @@ function App() {
             for more information about the Greener Homes Program
           </div>
         </CentralTile>
-        <CentralTile>
+        <CentralTile style={{ width: CS1TileWidth }}>
           <div className={centralTileStyles.centralTileHeader}>
             BC <b>Net Metering</b>
           </div>
@@ -205,6 +212,17 @@ function App() {
           </div>
         </FullWidthSection>
       </BlackFade>
+      <CentralSection style={{ flexDirection: "column" }}>
+        <div style={{ width: "100%", textAlign: "center", fontSize: "2.5rem" }}>
+          Our <b>Products</b>
+        </div>
+        <div style={{ margin: "4rem 0rem 4rem 5rem" }}>
+          <ProductCarousel
+            productCarouselLogoHeight={productCarouselLogoHeight}
+            wSmall={wSmall}
+          />
+        </div>
+      </CentralSection>
     </div>
   );
 }

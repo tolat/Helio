@@ -25,12 +25,13 @@
   width: 100%;
 }
 
-.navbarSpacer {
-  height: var(--navBarHeight);
+.alice-carousel__wrapper {
+  display: block;
+  justify-content: space-between;
 }
 
 @media (max-width: 800px) {
   .App {
-    zoom: 0.8;
+    zoom: 0.6;
   }
 }

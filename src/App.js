@@ -272,7 +272,11 @@ function App() {
           style={{ width: "100%", display: "flex", justifyContent: "center" }}>
           <button
             className={`${styles.myButton} ${styles.myButtonDark}`}
-            style={{ backgroundColor: "grey" }}>
+            style={{
+              backgroundColor: "grey",
+              color: "white",
+              fontSize: "1.1rem",
+            }}>
             More FAQ
           </button>
         </div>

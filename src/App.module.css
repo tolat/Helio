@@ -23,11 +23,33 @@
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
+  max-width: var(--centralSpanWidth);
 }
 
-.alice-carousel__wrapper {
-  display: block;
-  justify-content: space-between;
+.myButton {
+  margin: 1rem 2rem 0 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: all 0.17s;
+  animation-timing-function: fade-in-out 1s;
+  border-radius: 3px;
+}
+
+.myButton:hover {
+  cursor: pointer;
+  transition: all 0.17s;
+  animation-timing-function: fade-in-out 1s;
+  font-weight: bold;
+}
+
+.myButtonDark {
+  color: white;
+  background-color: black;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 @media (max-width: 800px) {

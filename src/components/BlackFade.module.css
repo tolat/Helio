@@ -11,6 +11,8 @@
 .childrenContainer {
   width: 100%;
   position: sticky;
+  display: flex;
+  justify-content: center;
 }
 
 .container {

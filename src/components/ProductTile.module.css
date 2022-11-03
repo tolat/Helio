@@ -25,10 +25,11 @@
 }
 
 .text {
-  line-height: 1.3rem;
+  line-height: 1.5rem;
   padding: 1.5rem;
   color: black;
   text-align: left;
+  font-size: 1.1rem;
 }
 
 .tileGridContainer {

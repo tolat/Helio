@@ -9,63 +9,38 @@ import kinetic_logo from "../images/product_logos/kinetic_logo.png";
 import cadsol_logo from "../images/product_logos/cadsol_logo.png";
 import schneider_logo from "../images/product_logos/schneider_logo.png";
 
+const imageLinks = [
+  longi_logo,
+  enphase_logo,
+  solaredge_logo,
+  aps_logo,
+  kinetic_logo,
+  cadsol_logo,
+  schneider_logo,
+];
+
 const ProductCarousel = (props) => {
   // Alice carousel for products
   const handleDragStart = (e) => e.preventDefault();
-  const productCarouselItems = [
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={longi_logo}
-      onDragStart={handleDragStart}
-      alt="longi"
-    />,
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={enphase_logo}
-      onDragStart={handleDragStart}
-      alt="enphase"
-    />,
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={solaredge_logo}
-      onDragStart={handleDragStart}
-      alt="solaredge"
-    />,
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={aps_logo}
-      onDragStart={handleDragStart}
-      alt="aps"
-    />,
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={cadsol_logo}
-      onDragStart={handleDragStart}
-      alt="cadsol"
-    />,
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={kinetic_logo}
-      onDragStart={handleDragStart}
-      alt="kinetic"
-    />,
-    <img
-      style={{ maxWidth: "60%", maxHeight: props.productCarouselLogoHeight }}
-      src={schneider_logo}
-      onDragStart={handleDragStart}
-      alt="schneider"
-    />,
-  ];
+  const productCrouselItems = imageLinks.map((l) => (
+    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <img
+        height="60rem"
+        src={l}
+        alt="poduct-logo"
+        onDragStart={handleDragStart}></img>
+    </div>
+  ));
 
   return (
     <AliceCarousel
       mouseTracking
       autoPlay={true}
-      items={productCarouselItems}
+      items={productCrouselItems}
       disableButtonsControls={true}
       disableDotsControls={true}
       infinite={true}
-      animationDuration={2500}
+      animationDuration={2000}
       responsive={{
         0: { items: 2 },
         550: { items: 3 },

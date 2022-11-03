@@ -9,6 +9,7 @@ import centralTileStyles from "./components/CentralTile.module.css";
 import ProductTile from "./components/ProductTile";
 import productTileStyles from "./components/ProductTile.module.css";
 import ProductCarousel from "./components/ProductCarousel";
+import QnaCard from "./components/QnaCard";
 
 import greenerHomesPath from "./images/greener_homes_graphic.jpg";
 import netMeteringGraphic from "./images/netmetering_graphic2.png";
@@ -37,8 +38,7 @@ function App() {
   const [CS1FlexDirection, setCS1FlexDirection] = useState("row");
   const [CS1TileWidth, setCS1TileWidth] = useState("50%");
   const [PTWidth, setPTWidth] = useState("20%");
-  const [productCarouselLogoHeight, setProductCarouselLogoHeight] =
-    useState("4rem");
+  const [QnaTemplateColumns, setQnaTemplateColumns] = useState("50% 50%");
 
   // Function to use stately variables to update things that have changes based onsmall medium and alrge window sizes
   const toggleSmallMedLarge = (sml, med, lrg, fn) => {
@@ -53,7 +53,7 @@ function App() {
     toggleSmallMedLarge("80%", "20%", "20%", setPTWidth);
     toggleSmallMedLarge("column", "row", "row", setCS1FlexDirection);
     toggleSmallMedLarge("100%", "50%", "50%", setCS1TileWidth);
-    toggleSmallMedLarge("4rem", "5rem", "5rem", setProductCarouselLogoHeight);
+    toggleSmallMedLarge("100%", "50% 50%", "50% 50%", setQnaTemplateColumns);
   };
   window.addEventListener("resize", handleResize);
 
@@ -182,7 +182,7 @@ function App() {
               header={"String Inverters"}
               img={stringInvIcon}
               text={
-                "String inverters convert all your DC solar energy to AC in one unit. Although they are the older inverter technology, string inverters have good reliability, excellent serviceability, and come with the most attractive pricetag. Ideal for to minimizing your solar payback period."
+                "String inverters convert all your DC solar energy to AC in one unit. With the most attractive pricetag, they are ideal for minimizing your solar payback period."
               }
             />
             <ProductTile
@@ -190,7 +190,7 @@ function App() {
               header={"Microinverters"}
               img={microInvIcon}
               text={
-                "Miroinverters invert energy from DC to AC for each panel individually. This is the industry standard for the best inverter technology, providing excellent solar yield and shading compensation. Additionally, their longer standard lifespan results in greater return on investment."
+                "Miroinverters pair with individual panels to convert DC to AC right on the roof. This is the standard for the best inverter technology, with a larger Return On Investment."
               }
             />
             <ProductTile
@@ -198,7 +198,7 @@ function App() {
               header={"Energy Storage"}
               img={batteryIcon}
               text={
-                "Tired of losing power during outages? A battery backup can help you have continuous power for some or all of your home loads when the grid is down. We offer Lithium storage options for residential, as well as Flooded Lead-Acid and Absorbed Glass Mat for off-grid."
+                "Tired of losing power when the grid is down? A battery backup can help you have continuous power for some or all of your home loads through a power outage."
               }
             />
             <ProductTile
@@ -206,21 +206,75 @@ function App() {
               header={"All Black Panels"}
               img={bluetoblackIcon}
               text={
-                "Solar panels don't have to affect the aesthetic of your home. With all-black racking and solar panel options, your choice to save on energy can also add a sleek look to your roof. Most panel options are available in black - make sure to specify your colour preference when requesting a quote."
+                "Solar panels don't have to affect the aesthetic of your home. With all-black racking and solar panel options, saving on energy can also add a sleek look to your roof."
               }
             />
           </div>
         </FullWidthSection>
       </BlackFade>
-      <CentralSection style={{ flexDirection: "column" }}>
-        <div style={{ width: "100%", textAlign: "center", fontSize: "2.5rem" }}>
+      <CentralSection
+        style={{ flexDirection: "column", borderBottom: "1px solid grey" }}>
+        <div
+          style={{
+            width: "100%",
+            textAlign: "center",
+            fontSize: "2.5rem",
+            marginTop: "3rem",
+          }}>
           Our <b>Products</b>
         </div>
-        <div style={{ margin: "4rem 0rem 4rem 5rem" }}>
-          <ProductCarousel
-            productCarouselLogoHeight={productCarouselLogoHeight}
-            wSmall={wSmall}
-          />
+        <div style={{ margin: "4rem 0rem 5rem 0rem" }}>
+          <ProductCarousel wSmall={wSmall} />
+        </div>
+      </CentralSection>
+      <CentralSection style={{ flexDirection: "column" }}>
+        <div
+          style={{
+            width: "100%",
+            fontSize: "2rem",
+            textAlign: "center",
+          }}>
+          FAQ
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: QnaTemplateColumns,
+            justifyContent: "center",
+            width: "100%",
+          }}>
+          <CentralTile>
+            <QnaCard
+              question="Is it sunny enough in Vancouver and BC generally for solar to be worth it?"
+              answer="Yes! It is a common misconception that British Columbia is too rainy or overcast for solar, specificallt Vancouver and Victoria. In fact, BC receives the same amount of energy from the sun as Germany, a global leader in solar energy."
+            />
+          </CentralTile>
+          <CentralTile>
+            <QnaCard
+              question="How much does a typical system cost, and how long will it take to pay itself off?"
+              answer="In BC, the average cost of a solar ystem to offset the yearly energy usage of a home is $20,000 - $30,000 (not including battery backup). The payback period is very dependent on site conditions, shading, roof angle, and region, but is typially between 10-15 years."
+            />
+          </CentralTile>
+          <CentralTile>
+            <QnaCard
+              question="Is it sunny enough in Vancouver and BC generally for solar to be worth it?"
+              answer="Yes! adfasddasfasdfasdfas"
+            />
+          </CentralTile>
+          <CentralTile>
+            <QnaCard
+              question="Is it sunny enough in Vancouver and BC generally for solar to be worth it?"
+              answer="Yes! adfasddasfasdfasdfas"
+            />
+          </CentralTile>
+        </div>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+          <button
+            className={`${styles.myButton} ${styles.myButtonDark}`}
+            style={{ backgroundColor: "grey" }}>
+            More FAQ
+          </button>
         </div>
       </CentralSection>
     </div>

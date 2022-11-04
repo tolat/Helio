@@ -164,10 +164,10 @@ function App() {
             <div
               className={fullWidthStyles.text}
               style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
-              We offer a complete suite of solar solutions for grid-tied and
-              off-grid solar projects. Finding a line of solar equipment that
-              fits your vision and budget is important - our variety of product
-              tiers aims to cover all your home energy needs!
+              Finding a line of solar equipment that fits your vision and budget
+              is important - We offer a complete suite of solar solutions for
+              grid-tied and off-grid solar projects that aims to cover all your
+              home energy needs!
             </div>
           </div>
           <div
@@ -182,7 +182,7 @@ function App() {
               header={"String Inverters"}
               img={stringInvIcon}
               text={
-                "String inverters convert all your DC solar energy to AC in one unit. With the most attractive pricetag, they are ideal for minimizing your solar payback period."
+                "String inverters convert all your DC solar energy to AC in one unit. With the most attractive pricetag, they are ideal for minimizing your solar Payback Period."
               }
             />
             <ProductTile
@@ -198,7 +198,7 @@ function App() {
               header={"Energy Storage"}
               img={batteryIcon}
               text={
-                "Tired of losing power when the grid is down? A battery backup can help you have continuous power for some or all of your home loads through a power outage."
+                "Tired of losing power when the grid is down? A battery backup can help you maintian continuous power for some or all of your home loads through a power outage."
               }
             />
             <ProductTile
@@ -242,6 +242,10 @@ function App() {
             gridTemplateColumns: QnaTemplateColumns,
             justifyContent: "center",
             width: "100%",
+            overflow: "scroll",
+            "-ms-overflow-style": "none" /* for Internet Explorer, Edge */,
+            "scrollbar-width": "none" /* for Firefox */,
+            "overflow-y": "scroll",
           }}>
           <CentralTile>
             <QnaCard
@@ -252,25 +256,31 @@ function App() {
           <CentralTile>
             <QnaCard
               question="How much does a typical system cost, and how long will it take to pay itself off?"
-              answer="In BC, the average cost of a solar ystem to offset the yearly energy usage of a home is $20,000 - $30,000 (not including battery backup). The payback period is very dependent on site conditions, shading, roof angle, and region, but is typially between 10-15 years."
+              answer="In BC, the average cost of a solar ystem to offset the yearly energy usage of a home is $20,000 to $30,000 (not including battery backup). The payback period is very dependent on site conditions, shading, roof angle, and region, but is typially between 10-15 years."
             />
           </CentralTile>
           <CentralTile>
             <QnaCard
-              question="Is it sunny enough in Vancouver and BC generally for solar to be worth it?"
-              answer="Yes! adfasddasfasdfasdfas"
+              question="What are the product warranties and who will be around in 10 years to replace equipment if it malfuncitons?"
+              answer="We choose inverters and solar panels that come with a 25-year manufacturer warranty, and the brands we use are among the largest solar companies globally, giving you the most assurance that they will exists down the road if equipment fails. Additionally, all of our work is backed by a 5-year workmanship warranty."
             />
           </CentralTile>
           <CentralTile>
             <QnaCard
-              question="Is it sunny enough in Vancouver and BC generally for solar to be worth it?"
-              answer="Yes! adfasddasfasdfasdfas"
+              question="How long will it take to install solar on my home?"
+              answer="Despite the actual installation of solar panels taking only 2-4 days typically, solar project have a timeline of 3-12 weeks (depending on regional permitting requirements). The majority of delays come from waiting for a building permit if one is required. This can take anywhere from a week to 8 weeks depending on the municipality. Will will make sure we give you a realistic timeline based on your region's permit requirements."
             />
           </CentralTile>
         </div>
         <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-          <button
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            borderBottom: "1px solid grey",
+            paddingBottom: "4rem",
+          }}>
+          <div
             className={`${styles.myButton} ${styles.myButtonDark}`}
             style={{
               backgroundColor: "grey",
@@ -278,7 +288,7 @@ function App() {
               fontSize: "1.1rem",
             }}>
             More FAQ
-          </button>
+          </div>
         </div>
       </CentralSection>
     </div>

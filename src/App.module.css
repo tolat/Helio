@@ -1,7 +1,6 @@
 .App {
   display: flex;
   flex-direction: column;
-  height: 4000px;
   box-sizing: border-box;
 }
 

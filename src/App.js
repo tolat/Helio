@@ -10,6 +10,7 @@ import ProductTile from "./components/ProductTile";
 import productTileStyles from "./components/ProductTile.module.css";
 import ProductCarousel from "./components/ProductCarousel";
 import QnaCard from "./components/QnaCard";
+import Footer from "./components/Footer";
 
 import greenerHomesPath from "./images/greener_homes_graphic.jpg";
 import netMeteringGraphic from "./images/netmetering_graphic2.png";
@@ -22,6 +23,7 @@ import stringInvIcon from "./images/panels_string.png";
 import microInvIcon from "./images/panels_micro.png";
 import batteryIcon from "./images/battery.png";
 import bluetoblackIcon from "./images/bluetoblack.png";
+import netMeteringGraphicVertical from "./images/netmetering_graphic_vertical.jpg";
 
 import React, { useState } from "react";
 import { useWindowSize } from "usehooks-ts";
@@ -39,6 +41,9 @@ function App() {
   const [CS1TileWidth, setCS1TileWidth] = useState("50%");
   const [PTWidth, setPTWidth] = useState("20%");
   const [QnaTemplateColumns, setQnaTemplateColumns] = useState("50% 50%");
+  const [NMgraphic, setNMgraphic] = useState(netMeteringGraphic);
+  const [footerFlexDirection, setFooterFlexDirection] = useState("row");
+  const [footerTextMaxWidth, setFooterTextMaxWidth] = useState("32rem");
 
   // Function to use stately variables to update things that have changes based onsmall medium and alrge window sizes
   const toggleSmallMedLarge = (sml, med, lrg, fn) => {
@@ -46,15 +51,41 @@ function App() {
   };
 
   // Handles resize for the app
+  let resizeUpdateScheduled = false;
   const handleResize = (e) => {
-    toggleSmallMedLarge(banner1_s, banner1, banner1_l, setBanner1Background);
-    toggleSmallMedLarge("grid", "flex", "flex", setPTDisplay);
-    toggleSmallMedLarge("center", "", "", setPTJustify);
-    toggleSmallMedLarge("80%", "20%", "20%", setPTWidth);
-    toggleSmallMedLarge("column", "row", "row", setCS1FlexDirection);
-    toggleSmallMedLarge("100%", "50%", "50%", setCS1TileWidth);
-    toggleSmallMedLarge("100%", "50% 50%", "50% 50%", setQnaTemplateColumns);
+    if (!resizeUpdateScheduled) {
+      resizeUpdateScheduled = true;
+      setTimeout(() => {
+        toggleSmallMedLarge(
+          banner1_s,
+          banner1,
+          banner1_l,
+          setBanner1Background
+        );
+        toggleSmallMedLarge("grid", "flex", "flex", setPTDisplay);
+        toggleSmallMedLarge("center", "", "", setPTJustify);
+        toggleSmallMedLarge("80%", "20%", "20%", setPTWidth);
+        toggleSmallMedLarge("column", "row", "row", setCS1FlexDirection);
+        toggleSmallMedLarge("100%", "50%", "50%", setCS1TileWidth);
+        toggleSmallMedLarge(
+          "100%",
+          "50% 50%",
+          "50% 50%",
+          setQnaTemplateColumns
+        );
+        toggleSmallMedLarge(
+          netMeteringGraphicVertical,
+          netMeteringGraphic,
+          netMeteringGraphic,
+          setNMgraphic
+        );
+        toggleSmallMedLarge("column", "row", "row", setFooterFlexDirection);
+        toggleSmallMedLarge("", "32rem", "32rem", setFooterTextMaxWidth);
+        resizeUpdateScheduled = false;
+      }, 50);
+    }
   };
+
   window.addEventListener("resize", handleResize);
 
   // App onload function
@@ -141,7 +172,7 @@ function App() {
           </div>
           <img
             style={{ margin: "1.5rem 0 1.5rem 0" }}
-            src={netMeteringGraphic}
+            src={NMgraphic}
             alt="Net Metering Graphic"
           />
           <div style={{ justifySelf: "stretch" }}>
@@ -243,9 +274,9 @@ function App() {
             justifyContent: "center",
             width: "100%",
             overflow: "scroll",
-            "-ms-overflow-style": "none" /* for Internet Explorer, Edge */,
-            "scrollbar-width": "none" /* for Firefox */,
-            "overflow-y": "scroll",
+            msOverflowStyle: "none" /* for Internet Explorer, Edge */,
+            scrollbarWidth: "none" /* for Firefox */,
+            overflowY: "scroll",
           }}>
           <CentralTile>
             <QnaCard
@@ -280,7 +311,7 @@ function App() {
             borderBottom: "1px solid grey",
             paddingBottom: "4rem",
           }}>
-          <div
+          {/* <div
             className={`${styles.myButton} ${styles.myButtonDark}`}
             style={{
               backgroundColor: "grey",
@@ -288,9 +319,35 @@ function App() {
               fontSize: "1.1rem",
             }}>
             More FAQ
+          </div> */}
+        </div>
+      </CentralSection>
+      <CentralSection>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            margin: "2rem 0 5rem 0",
+          }}>
+          <div
+            className={`${styles.myButton} ${styles.myButtonDark}`}
+            style={{
+              backgroundColor: "rgb(64,136,202)",
+              color: "white",
+              fontSize: "1.8rem",
+              width: "100%",
+              height: "3rem",
+            }}>
+            Request Free Solar Quote!
           </div>
         </div>
       </CentralSection>
+      <Footer
+        footerFlexDirection={footerFlexDirection}
+        footerTextMaxWidth={footerTextMaxWidth}
+      />
     </div>
   );
 }

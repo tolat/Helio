@@ -11,4 +11,5 @@
   flex-grow: 1;
   max-width: var(--centralSpanWidth);
   min-width: 0;
+  box-sizing: border-box;
 }

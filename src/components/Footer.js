@@ -1,9 +1,13 @@
 import styles from "./Footer.module.css";
-import FullWidthSection from "./FullWidthSection";
-import CentralSection from "./CentralSection";
+import FullWidthSection from "./GeneralUI/FullWidthSection";
+import CentralSection from "./GeneralUI/CentralSection";
 import light_logo from "../images/Helio_logo2_nobg_light.png";
+import { selectSML } from "../utils";
 
 const Footer = (props) => {
+  const w = props.viewportWidth;
+  const flexDirection = selectSML(w, "column", "row", "row");
+  const textMaxWidth = selectSML(w, "", "32rem", "32rem");
   return (
     <FullWidthSection
       style={{
@@ -12,21 +16,24 @@ const Footer = (props) => {
       <CentralSection>
         <div
           className={styles.container}
-          style={{ flexDirection: props.footerFlexDirection }}>
+          style={{ flexDirection: flexDirection }}>
           <FooterTile
+            key="ft1"
             header={"Contact"}
             text={"(604) 723-5351 \n info@heliosolar.com"}
           />
           <FooterTile
-            style={{ maxWidth: props.footerTextMaxWidth }}
+            key="ft2"
+            style={{ maxWidth: textMaxWidth }}
             header="About"
-            text="Helio solar is a new solar intallation company started by the
+            text="Helio solar is a solar intallation company started by the
               owners after working for a number of years at one of the biggest
               solar companies in Canada. All of our staff are certified NABCEP
               solar PV associates, and we staff a registered electrician on
               every job."
           />
           <FooterTile
+            key="ft3"
             style={{
               justifyContent: "flex-end",
               height: "100%",

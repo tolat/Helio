@@ -1,13 +1,13 @@
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
-import longi_logo from "../images/product_logos/longi_logo.png";
-import enphase_logo from "../images/product_logos/enphase_logo.png";
-import solaredge_logo from "../images/product_logos/solaredge_logo.png";
-import aps_logo from "../images/product_logos/aps_logo.png";
-import kinetic_logo from "../images/product_logos/kinetic_logo.png";
-import cadsol_logo from "../images/product_logos/cadsol_logo.png";
-import schneider_logo from "../images/product_logos/schneider_logo.png";
+import longi_logo from "../../images/product_logos/longi_logo.png";
+import enphase_logo from "../../images/product_logos/enphase_logo.png";
+import solaredge_logo from "../../images/product_logos/solaredge_logo.png";
+import aps_logo from "../../images/product_logos/aps_logo.png";
+import kinetic_logo from "../../images/product_logos/kinetic_logo.png";
+import cadsol_logo from "../../images/product_logos/cadsol_logo.png";
+import schneider_logo from "../../images/product_logos/schneider_logo.png";
 
 const imageLinks = [
   longi_logo,
@@ -44,7 +44,7 @@ const ProductCarousel = (props) => {
       responsive={{
         0: { items: 2 },
         550: { items: 3 },
-        [`${props.wSmall}`]: { items: 4 },
+        [`${process.env.REACT_APP_BREAKPOINT_S}`]: { items: 4 },
       }}
     />
   );

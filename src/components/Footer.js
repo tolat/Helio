@@ -67,7 +67,7 @@ const FooterTile = (props) => {
     props.text &&
     String(props.text)
       .split("\n")
-      .map((str) => <div>{str}</div>);
+      .map((str) => <div key={Math.random()}>{str}</div>);
 
   return (
     <div className={styles.item} style={props.style}>

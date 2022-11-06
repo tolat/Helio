@@ -9,7 +9,9 @@ const ProductTile = (props) => {
         src={props.img}
         alt="string inverter icon"
       />
-      <div className={styles.text}>{props.text}</div>
+      <div className={styles.text} style={props.textStyles}>
+        {props.text}
+      </div>
     </div>
   );
 };

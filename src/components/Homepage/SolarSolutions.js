@@ -16,6 +16,7 @@ const SolarSolutions = (props) => {
   const tileDisplay = selectSML(w, "grid", "flex", "flex");
   const tileJustify = selectSML(w, "center", "", "");
   const tileWidth = selectSML(w, "80%", "20%", "20%");
+  const textAlign = selectSML(w, "center", "", "");
 
   return (
     <BlackFade backgroundImage={banner2} backgroundOpacity="0.65">
@@ -74,6 +75,7 @@ const SolarSolutions = (props) => {
               header={data.h}
               img={data.img}
               text={data.t}
+              textStyles={{ textAlign: textAlign }}
             />
           ))}
         </div>

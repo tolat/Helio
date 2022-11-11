@@ -14,9 +14,8 @@ const Modal = (props) => {
       style={{
         opacity: props.modalVis.opacity,
         visibility: props.modalVis.visibility,
-      }}
-      onScroll={props.onScroll}>
-      <div className={styles.blackout} onClick={props.toggleModalHandler}></div>
+      }}>
+      <div className={styles.blackout}></div>
       <div
         className={`${styles.modal} noscroll`}
         style={{

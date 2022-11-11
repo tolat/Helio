@@ -5,16 +5,13 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  transition: all 0.17s;
-  animation-timing-function: fade-in-out 1s;
   border-radius: 3px;
+  transition: opacity 0.1s ease-in;
 }
 
 .navButton:hover {
   cursor: pointer;
-  transition: all 0.17s;
-  animation-timing-function: fade-in-out 1s;
-  font-weight: bold;
+  opacity: 0.6;
 }
 
 .navButtonBlack {

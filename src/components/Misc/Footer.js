@@ -26,11 +26,11 @@ const Footer = (props) => {
             key="ft2"
             style={{ maxWidth: textMaxWidth }}
             header="About"
-            text="Helio solar is a solar intallation company started by the
+            text="Helio solar was founded by the
               owners after working for a number of years at one of the biggest
               solar companies in Canada. All of our staff are certified NABCEP
-              solar PV associates, and we staff a registered electrician on
-              every job."
+              solar PV associates, and registered electricians are on
+              every job. Our aim is to further grow BC's renewable energy industry - another drop in the bucket!"
           />
           <FooterTile
             key="ft3"

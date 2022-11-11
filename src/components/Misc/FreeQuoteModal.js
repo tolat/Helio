@@ -140,8 +140,10 @@ const FreeQuoteModal = (props) => {
           width: "100%",
           margin: "0rem 0 1.5rem 0",
           height: "3.8rem",
+          backgroundColor: "rgb(39,39,39)",
+          color: "white",
         }}>
-        Submit Quote Request
+        Submit Quote Request!
       </GeneralButton>
     </Modal>
   );

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.17s;
+  transition: opacity 0.17s linear;
   animation-timing-function: fade-in-out 1s;
   border-radius: 3px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
@@ -13,7 +13,5 @@
 
 .myButton:hover {
   cursor: pointer;
-  transition: all 0.17s;
-  animation-timing-function: fade-in-out 1s;
   opacity: 0.8;
 }

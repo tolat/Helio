@@ -1,6 +1,5 @@
 import Modal from "../GeneralUI/Modal";
 import ContactCard from "./ContactCard";
-import styles from "./ContactModal.module.css";
 import { selectTSML } from "../../utils";
 
 const ContactModal = (props) => {

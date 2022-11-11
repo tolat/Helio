@@ -34,7 +34,7 @@ function App() {
         modalVis={contactModalVis}
         setModalVis={setContactModalVis}
       />
-      <div className={styles.App} style={{ zoom: appZoom }}>
+      <div className={styles.App} id="App" style={{ zoom: appZoom }}>
         <NavBar
           viewportWidth={width}
           setQuoteModalVis={setQuoteModalVis}

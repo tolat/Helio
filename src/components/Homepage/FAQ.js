@@ -8,7 +8,7 @@ const FAQ = (props) => {
   const templateCols = selectTSML(w, "100%", "100%", "50% 50%", "50% 50%");
 
   return (
-    <CentralSection style={{ flexDirection: "column" }}>
+    <CentralSection id="FAQsection" style={{ flexDirection: "column" }}>
       <div
         style={{
           width: "100%",

@@ -12,5 +12,6 @@ export const selectTSML = (width, tiny, sml, med, lrg) => {
 export const handleToggleModal = (setModalVisFunction) => {
   const hide = { o: "0", v: "hidden" };
   const show = { o: "1", v: "visible" };
+  // eslint-disable-next-line
   setModalVisFunction((prevState) => (prevState.o == "0" ? show : hide));
 };

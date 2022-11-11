@@ -1,5 +1,5 @@
 import CentralSection from "../GeneralUI/CentralSection";
-import styles from "../../App.module.css";
+import GeneralButton from "../GeneralUI/GeneralButton";
 
 const RequestQuoteButton = (props) => {
   return (
@@ -12,17 +12,17 @@ const RequestQuoteButton = (props) => {
           justifyContent: "center",
           margin: "2rem 0 5rem 0",
         }}>
-        <div
-          className={`${styles.myButton} ${styles.myButtonDark}`}
+        <GeneralButton
           style={{
             backgroundColor: "rgb(64,136,202)",
             color: "white",
             fontSize: "1.8rem",
             width: "100%",
-            height: "3rem",
-          }}>
+            height: "4rem",
+          }}
+          onClick={props.handleToggleQuoteModal}>
           Request Free Solar Quote!
-        </div>
+        </GeneralButton>
       </div>
     </CentralSection>
   );

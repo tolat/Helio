@@ -1,26 +1,40 @@
 import styles from "./Modal.module.css";
-import { selectSML } from "../../utils";
+import { selectTSML } from "../../utils";
+import closeButton from "../../images/close_button.png";
 
 const Modal = (props) => {
   const w = props.viewportWidth;
-  const modalWidth = selectSML(w, "90%", "800px", "800px");
-  const modalHeight = selectSML(w, "90%", "", "");
+  const modalWidth = selectTSML(w, "100%", "900px", "900px", "900px");
+  const modalHeight = selectTSML(w, "100%", "", "", "");
+  const modalZoom = selectTSML(w, "0.8", "0.8", "1", "1");
 
   return (
     <div
-      className={styles.container}
+      className={`${styles.container} noscroll`}
       style={{
-        opacity: props.modalVis.o,
-        visibility: props.modalVis.v,
+        opacity: props.modalVis.opacity,
+        visibility: props.modalVis.visibility,
       }}
       onScroll={props.onScroll}>
-      <div className={styles.blackout}></div>
+      <div className={styles.blackout} onClick={props.toggleModalHandler}></div>
       <div
-        className={styles.modal}
-        style={{ width: modalWidth, height: modalHeight }}>
-        <div className={styles.modalTitle}>{props.title}</div>
-        <div className={styles.closeModalButton}></div>
-        <div>{props.children}</div>
+        className={`${styles.modal} noscroll`}
+        style={{
+          width: modalWidth,
+          zoom: modalZoom,
+          height: modalHeight,
+        }}>
+        <div className={styles.sidepanel}></div>
+        <div className={styles.headerContainer}>
+          <div className={styles.headerSpacer}></div>
+          <img
+            src={closeButton}
+            className={styles.closeModalButton}
+            alt="exit modal button"
+            onClick={props.toggleModalHandler}
+          />
+        </div>
+        {props.children}
       </div>
     </div>
   );

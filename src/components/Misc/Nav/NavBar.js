@@ -11,7 +11,7 @@ const NavBar = (props) => {
     <div className={styles.navbar}>
       <img className={styles.navbarLogo} src={logo} alt="company logo" />
       <div className={styles.buttonContainer}>
-        <NavButton text="About" />
+        <NavButton text="Contact" />
         <NavButton text="FAQ" />
         <NavButton
           text="Free Quote"

@@ -8,35 +8,39 @@ import FAQ from "./components/Homepage/FAQ";
 import RequestQuoteButton from "./components/Homepage/RequestQuoteButton";
 import Footer from "./components/Misc/Footer";
 import { useWindowSize } from "usehooks-ts";
-import Modal from "./components/GeneralUI/Modal";
+import FreeQuoteModal from "./components/Misc/FreeQuoteModal";
 import { useState } from "react";
+import { selectTSML } from "./utils";
 
 function App() {
   const { width } = useWindowSize();
+  const appZoom = selectTSML(width, "0.6", "0.8", "1", "1");
   const [quoteModalVis, setQuoteModalVis] = useState({
-    o: "0",
-    v: "hidden",
+    opacity: "0",
+    visibility: "hidden",
   });
 
   const handleToggleQuoteModal = () => {
-    setQuoteModalVis(
-      quoteModalVis.display == ""
-        ? { o: "0", v: "hidden" }
-        : { o: "1", v: "visible" }
-    );
+    const hide = { opacity: "0", visibility: "hidden" };
+    const show = { opacity: "1", visibility: "visible" };
+    setQuoteModalVis((prevState) => (prevState.opacity == "0" ? show : hide));
   };
 
   return (
-    <div className={styles.AppContainer}>
-      <Modal viewportWidth={width} modalVis={quoteModalVis} />
-      <div className={styles.App}>
+    <div className={`${styles.AppContainer} noscroll`}>
+      <FreeQuoteModal
+        viewportWidth={width}
+        modalVis={quoteModalVis}
+        handleToggleQuoteModal={handleToggleQuoteModal}
+      />
+      <div className={styles.App} style={{ zoom: appZoom }}>
         <NavBar handleToggleQuoteModal={handleToggleQuoteModal} />
         <Banner1 viewportWidth={width} />
         <SolarPrograms viewportWidth={width} />
         <SolarSolutions viewportWidth={width} />
         <OurProducts />
         <FAQ viewportWidth={width} />
-        <RequestQuoteButton quoteModalVis={quoteModalVis} />
+        <RequestQuoteButton handleToggleQuoteModal={handleToggleQuoteModal} />
         <Footer viewportWidth={width} />
       </div>
     </div>

@@ -1,7 +1,7 @@
 import FullWidthSection from "../GeneralUI/FullWidthSection";
 import BlackFade from "../GeneralUI/BlackFade";
 import ProductTile from "../GeneralUI/ProductTile";
-import { selectSML } from "../../utils";
+import { selectTSML } from "../../utils";
 
 import styles from "./SolarSolutions.module.css";
 
@@ -13,10 +13,11 @@ import bluetoblackIcon from "../../images/bluetoblack.png";
 
 const SolarSolutions = (props) => {
   const w = props.viewportWidth;
-  const tileDisplay = selectSML(w, "grid", "flex", "flex");
-  const tileJustify = selectSML(w, "center", "", "");
-  const tileWidth = selectSML(w, "85%", "20%", "20%");
-  const textAlign = selectSML(w, "", "", "");
+  const tileDisplay = selectTSML(w, "grid", "grid", "flex", "flex");
+  const tileJustify = selectTSML(w, "center", "center", "", "");
+  const tileWidth = selectTSML(w, "85%", "85%", "20%", "20%");
+  const textAlign = selectTSML(w, "", "", "", "");
+  const tileMinHeight = selectTSML(w, "", "", "26rem", "26rem");
 
   return (
     <BlackFade backgroundImage={banner2} backgroundOpacity="0.65">
@@ -70,7 +71,7 @@ const SolarSolutions = (props) => {
             },
           ].map((data) => (
             <ProductTile
-              style={{ width: tileWidth }}
+              style={{ width: tileWidth, minHeight: tileMinHeight }}
               key={data.id}
               header={data.h}
               img={data.img}

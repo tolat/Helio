@@ -1,11 +1,11 @@
 import CentralSection from "../GeneralUI/CentralSection";
 import QnaCard from "../GeneralUI/QnaCard";
 import CentralTile from "../GeneralUI/CentralTile";
-import { selectSML } from "../../utils";
+import { selectTSML } from "../../utils";
 
 const FAQ = (props) => {
   const w = props.viewportWidth;
-  const templateCols = selectSML(w, "100%", "50% 50%", "50% 50%");
+  const templateCols = selectTSML(w, "100%", "100%", "50% 50%", "50% 50%");
 
   return (
     <CentralSection style={{ flexDirection: "column" }}>

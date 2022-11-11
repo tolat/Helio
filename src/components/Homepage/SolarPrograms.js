@@ -1,7 +1,7 @@
 import CentralTile from "../GeneralUI/CentralTile";
 import CentralSection from "../GeneralUI/CentralSection";
 import styles from "./SolarPrograms.module.css";
-import { selectSML } from "../../utils";
+import { selectTSML } from "../../utils";
 
 import greenerhomes_graphic from "../../images/greener_homes_graphic.jpg";
 import nm_hor from "../../images/netmetering_graphic2.png";
@@ -9,9 +9,9 @@ import nm_ver from "../../images/netmetering_graphic_vertical.jpg";
 
 const SolarPrograms = (props) => {
   const w = props.viewportWidth;
-  const tileFlexDirection = selectSML(w, "column", "row", "row");
-  const tileWidth = selectSML(w, "100%", "50%", "50%");
-  const nm_graphic = selectSML(w, nm_ver, nm_hor, nm_hor);
+  const tileFlexDirection = selectTSML(w, "column", "column", "row", "row");
+  const tileWidth = selectTSML(w, "100%", "100%", "50%", "50%");
+  const nm_graphic = selectTSML(w, nm_ver, nm_ver, nm_hor, nm_hor);
 
   return (
     <CentralSection style={{ flexDirection: `${tileFlexDirection}` }}>

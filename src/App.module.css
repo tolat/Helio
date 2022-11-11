@@ -2,39 +2,5 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-}
-
-.noscroll::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
-}
-
-.noscroll {
-  scrollbar-width: none; /* for Firefox */
-}
-
-.myButton {
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  transition: all 0.17s;
-  animation-timing-function: fade-in-out 1s;
-  border-radius: 3px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  border: none;
-}
-
-.myButton:hover {
-  cursor: pointer;
-  transition: all 0.17s;
-  animation-timing-function: fade-in-out 1s;
-  font-weight: bold;
-}
-
-@media (max-width: 800px) {
-  .App {
-    zoom: 0.6;
-  }
+  min-height: calc(900px);
 }

@@ -2,12 +2,12 @@ import styles from "./Footer.module.css";
 import FullWidthSection from "../GeneralUI/FullWidthSection";
 import CentralSection from "../GeneralUI/CentralSection";
 import light_logo from "../../images/Helio_logo2_nobg_light.png";
-import { selectSML } from "../../utils";
+import { selectTSML } from "../../utils";
 
 const Footer = (props) => {
   const w = props.viewportWidth;
-  const flexDirection = selectSML(w, "column", "row", "row");
-  const textMaxWidth = selectSML(w, "", "32rem", "32rem");
+  const flexDirection = selectTSML(w, "column", "column", "row", "row");
+  const textMaxWidth = selectTSML(w, "", "", "32rem", "32rem");
   return (
     <FullWidthSection
       style={{

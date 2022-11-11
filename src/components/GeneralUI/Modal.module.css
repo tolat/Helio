@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.15s ease-out;
+  transition: opacity 0.1s ease-in-out;
 }
 
 .blackout {
@@ -15,20 +15,44 @@
   height: 100vh;
   background-color: black;
   opacity: 0.5;
-  position: absolute;
-  top: 0;
   z-index: 3;
+  position: fixed;
 }
 
 .modal {
-  width: 800px;
-  height: 70%;
-  margin-top: 10%;
+  box-sizing: border-box;
+  padding: 3rem;
   background-color: white;
   border-radius: 3px;
-  position: absolute;
-  top: 0;
   z-index: 3;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerSpacer {
+  width: 2.5rem;
+  height: 0rem;
+}
+
+.closeModalButton {
+  height: 2.5rem;
+  transition: opacity 0.15s ease-out;
+  margin-right: -0.8rem;
+  z-index: 5;
+}
+
+.closeModalButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.closeModalButton:active {
+  opacity: 1;
 }

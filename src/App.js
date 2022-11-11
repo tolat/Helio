@@ -34,7 +34,10 @@ function App() {
         handleToggleQuoteModal={handleToggleQuoteModal}
       />
       <div className={styles.App} style={{ zoom: appZoom }}>
-        <NavBar handleToggleQuoteModal={handleToggleQuoteModal} />
+        <NavBar
+          viewportWidth={width}
+          handleToggleQuoteModal={handleToggleQuoteModal}
+        />
         <Banner1 viewportWidth={width} />
         <SolarPrograms viewportWidth={width} />
         <SolarSolutions viewportWidth={width} />

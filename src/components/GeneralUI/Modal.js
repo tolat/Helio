@@ -6,7 +6,7 @@ const Modal = (props) => {
   const w = props.viewportWidth;
   const modalWidth = selectTSML(w, "100%", "900px", "900px", "900px");
   const modalHeight = selectTSML(w, "100%", "", "", "");
-  const modalZoom = selectTSML(w, "0.8", "0.8", "1", "1");
+  const modalZoom = selectTSML(w, "0.9", "0.8", "1", "1");
 
   return (
     <div

@@ -2,6 +2,20 @@
   padding: 1rem;
   box-sizing: border-box;
   overflow-y: scroll;
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 100px),
+    transparent 100%
+  );
+}
+
+.bottomFade {
+  color: red;
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 150px),
+    transparent 100%
+  );
 }
 
 .sectionHeader {
@@ -12,6 +26,7 @@
   margin-bottom: 1.2rem;
   font-style: italic;
   color: rgb(0, 0, 0);
+  display: flex;
 }
 
 .sectionContainer {
@@ -20,4 +35,9 @@
 
 .sectionInputsContainer {
   display: flex;
+}
+
+.inputIcon {
+  height: 1.9rem;
+  margin-right: 0.5rem;
 }

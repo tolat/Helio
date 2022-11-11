@@ -4,16 +4,18 @@ import GeneralInput from "../GeneralUI/GeneralInput";
 import GeneralButton from "../GeneralUI/GeneralButton";
 import { selectTSML } from "../../utils";
 
+import energy_icon from "../../images/energy_icon.png";
+import roof_icon from "../../images/roof_icon.png";
+import at_icon from "../../images/at_icon.png";
+import solar_icon from "../../images/solar_icon.png";
+
 const FreeQuoteModal = (props) => {
   const w = props.viewportWidth;
-  const section234Display = selectTSML(w, "column", "", "", "");
-  const section234InputsDisplay = selectTSML(
-    w,
-    "column",
-    "column",
-    "column",
-    "column"
-  );
+  const col = "column";
+  const lowerSectionFlexDirection = selectTSML(w, "column", "", "", "");
+  const lowerSectionInputsFlexDirection = selectTSML(w, col, col, col, col);
+  const upperFlexDirection = selectTSML(w, "column", "row", "row", "row");
+  const formFade = selectTSML(w, "bottomFade", "", "", "");
 
   return (
     <Modal
@@ -21,44 +23,58 @@ const FreeQuoteModal = (props) => {
       modalVis={props.modalVis}
       toggleModalHandler={props.handleToggleQuoteModal}>
       <form
-        className={`${styles.form} noscroll`}
+        className={`${styles.form} noscroll ${formFade}`}
         style={{ marginTop: "-1.5rem" }}>
         <div className={styles.sectionContainer}>
-          <div className={styles.sectionHeader}>1. Contact Information</div>
+          <div className={styles.sectionHeader}>
+            <img className={styles.inputIcon} src={at_icon} alt="roof icon" />{" "}
+            <div>Contact Information</div>
+          </div>
           <GeneralInput
             label="project address"
             type="text"
             style={{ maxWidth: "100%" }}
             placeholder="Address"
           />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <GeneralInput
-              label="your name"
-              type="text"
-              style={{ maxWidth: "48%" }}
-              placeholder="Name"
-            />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: upperFlexDirection,
+            }}>
+            <GeneralInput label="your name" type="text" placeholder="Name" />
             <GeneralInput
               label="phone number"
-              type="text"
-              style={{ maxWidth: "48%" }}
+              type="number"
               placeholder="Phone"
+            />
+            <GeneralInput
+              label="email address"
+              type="email"
+              placeholder="Email"
             />
           </div>
         </div>
         <div
           style={{
             display: "flex",
-            flexDirection: section234Display,
+            flexDirection: lowerSectionFlexDirection,
             width: "100%",
             justifyContent: "space-between",
           }}>
           <div className={styles.sectionContainer}>
-            <div className={styles.sectionHeader}>2. Roof Details</div>
+            <div className={styles.sectionHeader}>
+              <img
+                className={styles.inputIcon}
+                src={roof_icon}
+                alt="roof icon"
+              />{" "}
+              <div>Roof Details</div>
+            </div>
             <div
               style={{
                 display: "flex",
-                flexDirection: section234InputsDisplay,
+                flexDirection: lowerSectionInputsFlexDirection,
               }}>
               <GeneralInput
                 label="Roof Material"
@@ -79,11 +95,18 @@ const FreeQuoteModal = (props) => {
             </div>
           </div>
           <div className={styles.sectionContainer}>
-            <div className={styles.sectionHeader}>3. Energy Details</div>
+            <div className={styles.sectionHeader}>
+              <img
+                className={styles.inputIcon}
+                src={energy_icon}
+                alt="energy icon"
+              />{" "}
+              <div>Energy Details</div>
+            </div>
             <div
               style={{
                 display: "flex",
-                flexDirection: section234InputsDisplay,
+                flexDirection: lowerSectionInputsFlexDirection,
               }}>
               <GeneralInput
                 label="Target Energy Offset"
@@ -106,11 +129,18 @@ const FreeQuoteModal = (props) => {
             </div>
           </div>
           <div className={styles.sectionContainer}>
-            <div className={styles.sectionHeader}>4. Equipment Preference</div>
+            <div className={styles.sectionHeader}>
+              <img
+                className={styles.inputIcon}
+                src={solar_icon}
+                alt="energy icon"
+              />{" "}
+              <div>Equipment Preference</div>
+            </div>
             <div
               style={{
                 display: "flex",
-                flexDirection: section234InputsDisplay,
+                flexDirection: lowerSectionInputsFlexDirection,
               }}>
               <GeneralInput
                 label="System Type"
@@ -138,7 +168,7 @@ const FreeQuoteModal = (props) => {
         style={{
           fontSize: "1.5rem",
           width: "100%",
-          margin: "0rem 0 1.5rem 0",
+          margin: "0rem 0 1rem 0",
           height: "3.8rem",
           backgroundColor: "rgb(39,39,39)",
           color: "white",

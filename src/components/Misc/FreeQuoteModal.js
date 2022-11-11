@@ -175,7 +175,7 @@ const FreeQuoteModal = (props) => {
                 label="Budget"
                 type="text"
                 style={{ maxWidth: "100%" }}
-                placeholder="Small to Large"
+                placeholder="Dollar Range"
               />
             </div>
           </div>

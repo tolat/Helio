@@ -1,7 +1,7 @@
 import styles from "./Modal.module.css";
 import { selectTSML, handleToggleModal } from "../../utils";
 import closeButton from "../../images/close_button.png";
-import background from "../../images/solar_background2.png";
+import background from "../../images/solar_background3.png";
 
 const Modal = (props) => {
   const w = props.viewportWidth;

@@ -1,6 +1,7 @@
 import styles from "./Modal.module.css";
 import { selectTSML, handleToggleModal } from "../../utils";
 import closeButton from "../../images/close_button.png";
+import background from "../../images/solar_background2.png";
 
 const Modal = (props) => {
   const w = props.viewportWidth;
@@ -25,6 +26,8 @@ const Modal = (props) => {
           zoom: modalZoom,
           height: props.modalHeight,
           maxHeight: props.modalMaxHeight,
+          backgroundImage: `url(${background}`,
+          backgroundSize: "cover",
         }}>
         <div className={styles.sidePanel}>{props.sidePanel}</div>
         <div className={styles.mainPanel}>

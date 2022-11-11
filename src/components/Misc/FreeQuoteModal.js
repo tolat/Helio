@@ -3,11 +3,13 @@ import styles from "./FreeQuoteModal.module.css";
 import GeneralInput from "../GeneralUI/GeneralInput";
 import GeneralButton from "../GeneralUI/GeneralButton";
 import { selectTSML } from "../../utils";
+import modalStyles from "../GeneralUI/Modal.module.css";
 
 import energy_icon from "../../images/energy_icon.png";
 import roof_icon from "../../images/roof_icon.png";
 import at_icon from "../../images/at_icon.png";
 import solar_icon from "../../images/solar_icon.png";
+import sendmail_icon from "../../images/sendmail_icon.png";
 
 const FreeQuoteModal = (props) => {
   const w = props.viewportWidth;
@@ -15,19 +17,34 @@ const FreeQuoteModal = (props) => {
   const lowerSectionFlexDirection = selectTSML(w, "column", "", "", "");
   const lowerSectionInputsFlexDirection = selectTSML(w, col, col, col, col);
   const upperFlexDirection = selectTSML(w, "column", "row", "row", "row");
-  const formFade = selectTSML(w, "bottomFade", "", "", "");
+  const formFade = selectTSML(w, "bottomFade");
+  const quoteModalWidth = selectTSML(w, "100%");
+  const quoteModalHeight = selectTSML(w, "100%");
+  const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
+  const scrollMaskImage = selectTSML(w, "", "none", "none", "none");
 
   return (
     <Modal
       viewportWidth={props.viewportWidth}
+      setModalVis={props.setModalVis}
       modalVis={props.modalVis}
-      toggleModalHandler={props.handleToggleQuoteModal}>
+      modalWidth={quoteModalWidth}
+      modalHeight={quoteModalHeight}
+      modalMaxHeight={quoteModalMaxHeight}>
       <form
         className={`${styles.form} noscroll ${formFade}`}
-        style={{ marginTop: "-1.5rem" }}>
-        <div className={styles.sectionContainer}>
-          <div className={styles.sectionHeader}>
-            <img className={styles.inputIcon} src={at_icon} alt="roof icon" />{" "}
+        style={{
+          marginTop: "-1.5rem",
+          maskImage: scrollMaskImage,
+          WebkitMaskImage: scrollMaskImage,
+        }}>
+        <div className={modalStyles.sectionContainer}>
+          <div className={modalStyles.sectionHeader}>
+            <img
+              className={modalStyles.inputIcon}
+              src={at_icon}
+              alt="roof icon"
+            />{" "}
             <div>Contact Information</div>
           </div>
           <GeneralInput
@@ -62,10 +79,10 @@ const FreeQuoteModal = (props) => {
             width: "100%",
             justifyContent: "space-between",
           }}>
-          <div className={styles.sectionContainer}>
-            <div className={styles.sectionHeader}>
+          <div className={modalStyles.sectionContainer}>
+            <div className={modalStyles.sectionHeader}>
               <img
-                className={styles.inputIcon}
+                className={modalStyles.inputIcon}
                 src={roof_icon}
                 alt="roof icon"
               />{" "}
@@ -94,10 +111,10 @@ const FreeQuoteModal = (props) => {
               />
             </div>
           </div>
-          <div className={styles.sectionContainer}>
-            <div className={styles.sectionHeader}>
+          <div className={modalStyles.sectionContainer}>
+            <div className={modalStyles.sectionHeader}>
               <img
-                className={styles.inputIcon}
+                className={modalStyles.inputIcon}
                 src={energy_icon}
                 alt="energy icon"
               />{" "}
@@ -128,10 +145,10 @@ const FreeQuoteModal = (props) => {
               />
             </div>
           </div>
-          <div className={styles.sectionContainer}>
-            <div className={styles.sectionHeader}>
+          <div className={modalStyles.sectionContainer}>
+            <div className={modalStyles.sectionHeader}>
               <img
-                className={styles.inputIcon}
+                className={modalStyles.inputIcon}
                 src={solar_icon}
                 alt="energy icon"
               />{" "}
@@ -164,16 +181,26 @@ const FreeQuoteModal = (props) => {
           </div>
         </div>
       </form>
+
       <GeneralButton
         style={{
-          fontSize: "1.5rem",
-          width: "100%",
-          margin: "0rem 0 1rem 0",
-          height: "3.8rem",
-          backgroundColor: "rgb(39,39,39)",
-          color: "white",
+          backgroundColor: "transparent",
+          boxShadow: "none",
+          fontSize: "1.6rem",
+          width: "94%",
+          alignSelf: "flex-start",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          margin: "0 0 3rem 0",
         }}>
-        Submit Quote Request!
+        <div>Submit Quote Request</div>
+
+        <img
+          style={{ marginLeft: "0.6rem", height: "2.3rem" }}
+          src={sendmail_icon}
+          alt="send icon"
+        />
       </GeneralButton>
     </Modal>
   );

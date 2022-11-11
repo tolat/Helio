@@ -1,5 +1,5 @@
 .form {
-  padding: 1rem;
+  padding: 1rem 4rem 1rem 4rem;
   box-sizing: border-box;
   overflow-y: scroll;
   mask-image: linear-gradient(
@@ -7,37 +7,4 @@
     black calc(100% - 100px),
     transparent 100%
   );
-}
-
-.bottomFade {
-  color: red;
-  mask-image: linear-gradient(
-    to bottom,
-    black calc(100% - 150px),
-    transparent 100%
-  );
-}
-
-.sectionHeader {
-  width: 100%;
-  text-align: left;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1.2rem;
-  font-style: italic;
-  color: rgb(0, 0, 0);
-  display: flex;
-}
-
-.sectionContainer {
-  margin-bottom: 3rem;
-}
-
-.sectionInputsContainer {
-  display: flex;
-}
-
-.inputIcon {
-  height: 1.9rem;
-  margin-right: 0.5rem;
 }

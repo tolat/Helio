@@ -8,6 +8,7 @@ const GeneralInput = (props) => {
         className={styles.input}
         type={props.type}
         placeholder={props.placeholder}
+        style={props.inputStyle}
       />
       {props.children}
     </div>

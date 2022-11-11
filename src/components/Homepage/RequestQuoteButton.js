@@ -1,7 +1,11 @@
 import CentralSection from "../GeneralUI/CentralSection";
 import GeneralButton from "../GeneralUI/GeneralButton";
+import { handleToggleModal } from "../../utils";
 
 const RequestQuoteButton = (props) => {
+  const clickHandler = () => {
+    handleToggleModal(props.setModalVis);
+  };
   return (
     <CentralSection>
       <div
@@ -20,7 +24,7 @@ const RequestQuoteButton = (props) => {
             width: "100%",
             height: "4rem",
           }}
-          onClick={props.handleToggleQuoteModal}>
+          onClick={clickHandler}>
           Request Free Solar Quote!
         </GeneralButton>
       </div>

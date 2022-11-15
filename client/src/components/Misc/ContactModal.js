@@ -7,6 +7,7 @@ const ContactModal = (props) => {
   const quoteModalWidth = selectTSML(w, "100%", "", "", "");
   const quoteModalHeight = selectTSML(w, "100%", "", "", "");
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
+
   return (
     <Modal
       viewportWidth={props.viewportWidth}

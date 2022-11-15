@@ -15,3 +15,25 @@ export const handleToggleModal = (setModalVisFunction) => {
   // eslint-disable-next-line
   setModalVisFunction((prevState) => (prevState.o == "0" ? show : hide));
 };
+
+export const sendMessage = (
+  msgObject,
+  path,
+  successFunction,
+  failureFunction
+) => {
+  fetch(`http://localhost:3000` + path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(msgObject),
+    //credentials: "include",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((responseData) => {
+      responseData.success
+        ? successFunction(responseData)
+        : failureFunction(responseData);
+    });
+};

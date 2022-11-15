@@ -15,9 +15,9 @@ const SolarSolutions = (props) => {
   const w = props.viewportWidth;
   const tileDisplay = selectTSML(w, "grid", "grid", "flex", "flex");
   const tileJustify = selectTSML(w, "center", "center", "", "");
-  const tileWidth = selectTSML(w, "85%", "85%", "20%", "20%");
+  const tileWidth = selectTSML(w, "85%", "85%", "22%", "22%");
   const textAlign = selectTSML(w, "", "", "", "");
-  const tileMinHeight = selectTSML(w, "", "", "26rem", "26rem");
+  const tileMinHeight = selectTSML(w, "", "", "24rem", "24rem");
 
   return (
     <BlackFade backgroundImage={banner2} backgroundOpacity="0.65">
@@ -55,7 +55,7 @@ const SolarSolutions = (props) => {
               id: "ss2",
               h: "Microinverters",
               img: microInvIcon,
-              t: "Miroinverters pair with individual panels to convert DC to AC right on the roof. This is industry standard best inverter tech, with a larger Return On Investment.",
+              t: "Microinverters pair with individual panels to convert DC to AC right on the roof. This is industry standard best inverter tech, with a larger Return On Investment.",
             },
             {
               id: "ss3",

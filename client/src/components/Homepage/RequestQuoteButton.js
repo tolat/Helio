@@ -1,11 +1,17 @@
 import CentralSection from "../GeneralUI/CentralSection";
 import GeneralButton from "../GeneralUI/GeneralButton";
 import { handleToggleModal } from "../../utils";
+import { selectTSML } from "../../utils";
 
 const RequestQuoteButton = (props) => {
+  const w = props.viewportWidth;
+
   const clickHandler = () => {
     handleToggleModal(props.setModalVis);
   };
+
+  const buttonWidth = selectTSML(w, "100%", "100%", "80%", "80%");
+
   return (
     <CentralSection>
       <div
@@ -21,7 +27,7 @@ const RequestQuoteButton = (props) => {
             backgroundColor: "rgb(64,136,202)",
             color: "white",
             fontSize: "1.8rem",
-            width: "100%",
+            width: buttonWidth,
             height: "4rem",
           }}
           onClick={clickHandler}>

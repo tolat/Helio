@@ -9,6 +9,8 @@ const GeneralInput = (props) => {
         type={props.type}
         placeholder={props.placeholder}
         style={props.inputStyle}
+        onChange={props.onChange}
+        value={props.value}
       />
       {props.children}
     </div>

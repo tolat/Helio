@@ -2,7 +2,8 @@ import GeneralButton from "../GeneralUI/GeneralButton";
 import GeneralInput from "../GeneralUI/GeneralInput";
 import styles from "./ContactCard.module.css";
 import modalStyles from "../GeneralUI/Modal.module.css";
-import { selectTSML } from "../../utils";
+import { selectTSML, sendMessage } from "../../utils";
+import { useState } from "react";
 
 import at_icon from "../../images/at_icon.png";
 import msg_icon from "../../images/message_icon.png";
@@ -15,8 +16,48 @@ const ContactCard = (props) => {
   const textAreaBottMarg = selectTSML(w, "10rem");
   const scrollMaskImage = selectTSML(w, "", "none", "none", "none");
 
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userMessage, setUserMessage] = useState("");
+
+  const emailChangedHandler = (event) => {
+    setUserEmail(event.target.value);
+  };
+  const phoneChangedHandler = (event) => {
+    setUserPhone(event.target.value);
+  };
+  const nameChangedHandler = (event) => {
+    setUserName(event.target.value);
+  };
+  const messageChangedHandler = (event) => {
+    setUserMessage(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = {
+      name: userName,
+      phone: userPhone,
+      email: userEmail,
+      message: userMessage,
+    };
+
+    const resetSuccess = () => {
+      setUserName("");
+      setUserPhone("");
+      setUserEmail("");
+      setUserMessage("");
+    };
+
+    sendMessage(formData, "/message", resetSuccess, (error) => {
+      console.log(error);
+    });
+  };
+
   return (
-    <form className={styles.form} style={props.style}>
+    <form className={styles.form} style={props.style} onSubmit={handleSubmit}>
       <div
         className={`${styles.nonButtonContainer} noscroll`}
         style={{
@@ -43,18 +84,24 @@ const ContactCard = (props) => {
               type="text"
               style={{ maxWidth: inputWidth }}
               placeholder="Name"
+              onChange={nameChangedHandler}
+              value={userName}
             />
             <GeneralInput
               label="Phone Number"
               type="text"
               style={{ maxWidth: inputWidth }}
               placeholder="Number"
+              onChange={phoneChangedHandler}
+              value={userPhone}
             />
             <GeneralInput
               label="Email Address"
               type="email"
               style={{ maxWidth: inputWidth }}
               placeholder="Email"
+              onChange={emailChangedHandler}
+              value={userEmail}
             />
           </div>
         </div>
@@ -69,7 +116,12 @@ const ContactCard = (props) => {
             />{" "}
             <div>Message</div>
           </div>
-          <textarea className={styles.textArea} rows="8" />
+          <textarea
+            onChange={messageChangedHandler}
+            value={userMessage}
+            className={styles.textArea}
+            rows="8"
+          />
         </div>
       </div>
 

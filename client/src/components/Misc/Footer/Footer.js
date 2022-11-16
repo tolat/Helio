@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
-import FullWidthSection from "../GeneralUI/FullWidthSection";
-import CentralSection from "../GeneralUI/CentralSection";
-import light_logo from "../../images/Helio_logo2_nobg_light.png";
-import { selectTSML } from "../../utils";
+import FullWidthSection from "../../GeneralUI/FullWidthSection";
+import CentralSection from "../../GeneralUI/CentralSection";
+import light_logo from "../../../images/Helio_logo2_nobg_light.png";
+import { selectTSML } from "../../../utils";
 
 const Footer = (props) => {
   const w = props.viewportWidth;

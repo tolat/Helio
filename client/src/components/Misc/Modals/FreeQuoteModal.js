@@ -1,15 +1,16 @@
-import Modal from "../GeneralUI/Modal";
+import Modal from "../../GeneralUI/Modal";
 import styles from "./FreeQuoteModal.module.css";
-import GeneralInput from "../GeneralUI/GeneralInput";
-import GeneralButton from "../GeneralUI/GeneralButton";
-import { selectTSML } from "../../utils";
-import modalStyles from "../GeneralUI/Modal.module.css";
+import GeneralInput from "../../GeneralUI/GeneralInput";
+import GeneralButton from "../../GeneralUI/GeneralButton";
+import { selectTSML, showFlash, closeFlash, sendMessage } from "../../../utils";
+import modalStyles from "../../GeneralUI/Modal.module.css";
 
-import energy_icon from "../../images/energy_icon.png";
-import roof_icon from "../../images/roof_icon.png";
-import at_icon from "../../images/at_icon.png";
-import solar_icon from "../../images/solar_icon.png";
-import sendmail_icon from "../../images/sendmail_icon.png";
+import energy_icon from "../../../images/energy_icon.png";
+import roof_icon from "../../../images/roof_icon.png";
+import at_icon from "../../../images/at_icon.png";
+import solar_icon from "../../../images/solar_icon.png";
+import sendmail_icon from "../../../images/sendmail_icon.png";
+import { useState } from "react";
 
 const FreeQuoteModal = (props) => {
   const w = props.viewportWidth;
@@ -23,6 +24,123 @@ const FreeQuoteModal = (props) => {
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
   const scrollMaskImage = selectTSML(w, "", "none", "none", "none");
   const equipPrefMarginBottom = selectTSML(w, "10rem", "", "", "");
+
+  const [userAddress, setUserAddress] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userName, setUserName] = useState("");
+  const [roofMaterial, setRoofMaterial] = useState("");
+  const [roofAge, setRoofAge] = useState("");
+  const [roofPitch, setRoofPitch] = useState("");
+  const [targetOffset, setTargetOffset] = useState("");
+  const [averageBill, setAverageBill] = useState("");
+  const [billingCycle, setBillingCycle] = useState("");
+  const [systemType, setSystemType] = useState("");
+  const [batteryBackup, setBatteryBackup] = useState("");
+  const [budget, setBudget] = useState("");
+
+  const addressChangedHandler = (event) => {
+    setUserAddress(event.target.value);
+  };
+  const emailChangedHandler = (event) => {
+    setUserEmail(event.target.value);
+  };
+  const phoneChangedHandler = (event) => {
+    setUserPhone(event.target.value);
+  };
+  const nameChangedHandler = (event) => {
+    setUserName(event.target.value);
+  };
+  const roofMaterialChangedHandler = (event) => {
+    setRoofMaterial(event.target.value);
+  };
+  const roofAgeChangedHandler = (event) => {
+    setRoofAge(event.target.value);
+  };
+  const roofPitcChangedhHandler = (event) => {
+    setRoofPitch(event.target.value);
+  };
+  const targetOffsetChangedHandler = (event) => {
+    setTargetOffset(event.target.value);
+  };
+  const averageBillChangedHandler = (event) => {
+    setAverageBill(event.target.value);
+  };
+  const billingCycleChangedHandler = (event) => {
+    setBillingCycle(event.target.value);
+  };
+  const systemTypeChangedHandler = (event) => {
+    setSystemType(event.target.value);
+  };
+  const batterBackupChangedHandler = (event) => {
+    setBatteryBackup(event.target.value);
+  };
+  const budgetChangedHandler = (event) => {
+    setBudget(event.target.value);
+  };
+
+  const clearModal = () => {
+    setUserAddress("");
+    setUserName("");
+    setUserPhone("");
+    setUserEmail("");
+    setRoofMaterial("");
+    setRoofAge("");
+    setRoofPitch("");
+    setTargetOffset("");
+    setAverageBill("");
+    setBillingCycle("");
+    setSystemType("");
+    setBatteryBackup("");
+    setBudget("");
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = {
+      type: "Quote",
+      userAddress,
+      userName,
+      userPhone,
+      userEmail,
+      roofMaterial,
+      roofAge,
+      roofPitch,
+      targetOffset,
+      averageBill,
+      billingCycle,
+      systemType,
+      batteryBackup,
+      budget,
+    };
+
+    const resetSuccess = () => {
+      clearModal();
+
+      showFlash(
+        "appFlash",
+        "Quote sent successfully!",
+        "Thank you for your request. We will get in touch with you if we have any questions, otherwise you can expect a quote within 3 business days.",
+        "rgb(164,231,169)"
+      );
+
+      setTimeout(() => {
+        closeFlash("appFlash");
+      }, 20000);
+    };
+
+    const resetFailure = (error) => {
+      showFlash(
+        "appFlash",
+        "There was an error sending your request.",
+        error.message,
+        "rgb(231,164,164)"
+      );
+    };
+
+    sendMessage(formData, "/quote", resetSuccess, resetFailure);
+  };
 
   return (
     <Modal
@@ -53,6 +171,8 @@ const FreeQuoteModal = (props) => {
             type="text"
             style={{ maxWidth: "100%" }}
             placeholder="Address"
+            value={userAddress}
+            onChange={addressChangedHandler}
           />
           <div
             style={{
@@ -60,16 +180,26 @@ const FreeQuoteModal = (props) => {
               justifyContent: "space-between",
               flexDirection: upperFlexDirection,
             }}>
-            <GeneralInput label="your name" type="text" placeholder="Name" />
+            <GeneralInput
+              label="your name"
+              type="text"
+              placeholder="Name"
+              value={userName}
+              onChange={nameChangedHandler}
+            />
             <GeneralInput
               label="phone number"
               type="number"
               placeholder="Phone"
+              value={userPhone}
+              onChange={phoneChangedHandler}
             />
             <GeneralInput
               label="email address"
               type="email"
               placeholder="Email"
+              value={userEmail}
+              onChange={emailChangedHandler}
             />
           </div>
         </div>
@@ -99,16 +229,22 @@ const FreeQuoteModal = (props) => {
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Asphalt, Metal, etc. "
+                value={roofMaterial}
+                onChange={roofMaterialChangedHandler}
               />
               <GeneralInput
                 label="Roof Age"
                 type="text"
                 placeholder="Num. Years"
+                value={roofAge}
+                onChange={roofAgeChangedHandler}
               />
               <GeneralInput
                 label="Roof Pitch"
                 type="text"
                 placeholder="Flat, Mid, Steep?"
+                value={roofPitch}
+                onChange={roofPitcChangedhHandler}
               />
             </div>
           </div>
@@ -131,18 +267,24 @@ const FreeQuoteModal = (props) => {
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="0%-100% "
+                value={targetOffset}
+                onChange={targetOffsetChangedHandler}
               />
               <GeneralInput
                 label="Average Hydro Bill"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Dollar Amount"
+                value={averageBill}
+                onChange={averageBillChangedHandler}
               />
               <GeneralInput
                 label="Billing Cycle"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="1 mo, 2 mo, etc."
+                value={billingCycle}
+                onChange={billingCycleChangedHandler}
               />
             </div>
           </div>
@@ -167,18 +309,24 @@ const FreeQuoteModal = (props) => {
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Off-Grid or Grid-Tied"
+                value={systemType}
+                onChange={systemTypeChangedHandler}
               />
               <GeneralInput
                 label="Battery Backup"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Yes/No"
+                value={batteryBackup}
+                onChange={batterBackupChangedHandler}
               />
               <GeneralInput
                 label="Budget"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Dollar Range"
+                value={budget}
+                onChange={budgetChangedHandler}
               />
             </div>
           </div>
@@ -196,7 +344,8 @@ const FreeQuoteModal = (props) => {
           justifyContent: "flex-end",
           alignItems: "center",
           margin: "0 0 3rem 0",
-        }}>
+        }}
+        onClick={handleSubmit}>
         <div>Submit Quote Request</div>
 
         <img

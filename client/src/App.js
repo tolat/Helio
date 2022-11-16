@@ -6,12 +6,13 @@ import SolarSolutions from "./components/Homepage/SolarSolutions";
 import OurProducts from "./components/Homepage/OurProducts";
 import FAQ from "./components/Homepage/FAQ";
 import RequestQuoteButton from "./components/Homepage/RequestQuoteButton";
-import Footer from "./components/Misc/Footer";
+import Footer from "./components/Misc/Footer/Footer";
 import { useWindowSize } from "usehooks-ts";
-import FreeQuoteModal from "./components/Misc/FreeQuoteModal";
+import FreeQuoteModal from "./components/Misc/Modals/FreeQuoteModal";
 import { useState } from "react";
 import { selectTSML } from "./utils";
-import ContactModal from "./components/Misc/ContactModal";
+import ContactModal from "./components/Misc/Modals/ContactModal";
+import Flash from "./components/Misc/Flash/Flash";
 
 function App() {
   const { width } = useWindowSize();
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className={`${styles.AppContainer} noscroll`}>
+      <Flash id="appFlash" />
       <FreeQuoteModal
         viewportWidth={width}
         modalVis={quoteModalVis}

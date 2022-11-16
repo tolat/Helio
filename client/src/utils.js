@@ -33,7 +33,18 @@ export const sendMessage = (
     })
     .then((responseData) => {
       responseData.success
-        ? successFunction(responseData)
-        : failureFunction(responseData);
+        ? successFunction()
+        : failureFunction(responseData.error);
     });
+};
+
+export const showFlash = (id, header, message, color) => {
+  document.getElementById(`${id}_flashContainer`).style.backgroundColor = color;
+  document.getElementById(`${id}_header`).innerText = header;
+  document.getElementById(`${id}_message`).innerText = message;
+  document.getElementById(`${id}_masterContainer`).style.marginTop = "2rem";
+};
+
+export const closeFlash = (id) => {
+  document.getElementById(`${id}_masterContainer`).style.marginTop = "-10rem";
 };

@@ -23,11 +23,6 @@ app.use(
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Handle CORS
-/* app.use((req, res, next) => {
-  handleCORS(req, res, next);
-}); */
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });

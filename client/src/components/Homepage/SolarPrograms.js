@@ -31,8 +31,9 @@ const SolarPrograms = (props) => {
             $40,000 Interest-Free Greener Homes Loan
           </div>
           <div className={styles.text}>
-            In addition to the grant, the Greener Homes Program and the CMHC are
-            offering loans of up to $40,000 for energy efficient Home retrofits
+            In addition to the grant, the Greener Homes Program in partnership
+            with the CMHC are offering loans of up to $40,000 for energy
+            efficient Home retrofits.
             <br />
             <br />
             To be eligible for the grant or the loan, homes must receive an
@@ -66,14 +67,14 @@ const SolarPrograms = (props) => {
             energy you produce with solar, you receive a bill credit that you
             can use against your actual energy consumption at month's end. If
             you produced more energy from solar than you used, the consumption
-            portion of your bill will be zero, and the extra credits will carry
-            over to the next billing cycle.
+            portion of your bill will be zero. Any extra credits will carry over
+            to the next billing cycle.
             <br /> <br />
-            Accumulated credits carry over month to month until you hit you
-            anniversary date (typically March), when any unused credits arelost.
-            When designing you solar system, we aim for a "100% offset" - making
-            sure you maximise your solar array while ensuring you don't end the
-            year with unused credits.
+            Accumulated credits carry over month-to-month until you hit you
+            anniversary date (typically March), when any unused credits are
+            forfeit. When designing large solar systems, we aim for a "100%
+            Offset" - making sure energy production is maximised while also not
+            ending the year with unused credits.
           </div>
           <img
             style={{ margin: "1.5rem 0 1.5rem 0" }}

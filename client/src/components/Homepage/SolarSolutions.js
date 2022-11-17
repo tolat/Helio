@@ -33,8 +33,8 @@ const SolarSolutions = (props) => {
             style={{ color: "white", fontSize: "1.5rem", paddingTop: "0" }}>
             Finding a line of solar equipment that fits your vision and budget
             is important - We offer a complete suite of solar solutions for
-            grid-tied and off-grid solar projects that aims to cover all your
-            home energy needs!
+            grid-tied and off-grid solar projects that can address a variety
+            home energy needs.
           </div>
         </div>
         <div
@@ -61,7 +61,7 @@ const SolarSolutions = (props) => {
               id: "ss3",
               h: "Energy Storage",
               img: batteryIcon,
-              t: "Tired of losing power when the grid is down? A battery backup can help you maintian continuous power for some or all of your home loads through a power outage.",
+              t: "Tired of losing power when the grid is down? A battery backup can help you maintain continuous power for some or all of your home loads through a power outage.",
             },
             {
               id: "ss4",

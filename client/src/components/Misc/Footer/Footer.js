@@ -27,7 +27,7 @@ const Footer = (props) => {
             style={{ maxWidth: textMaxWidth }}
             header="About"
             text="Helio solar was founded by the
-              owners after working for a number of years at one of the biggest
+              owners after working for a number of years at some of the biggest
               solar companies in Canada. All of our staff are certified NABCEP
               solar PV associates, and registered electricians are on
               every job. Our aim is to further grow BC's renewable energy industry - another drop in the bucket!"

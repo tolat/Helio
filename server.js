@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const { handleCORS } = require("./utils/customMiddeware");
+const favicon = require("serve-favicon");
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -20,6 +21,7 @@ app.use(
   express.static(path.join(__dirname, "client/build/static/"))
 );
 
+app.use(favicon(__dirname + "/favicon.ico"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

@@ -139,7 +139,11 @@ const FreeQuoteModal = (props) => {
       );
     };
 
-    sendMessage(formData, "/quote", resetSuccess, resetFailure);
+    try {
+      sendMessage(formData, "/quote", resetSuccess, resetFailure);
+    } catch (e) {
+      resetFailure(e);
+    }
   };
 
   return (

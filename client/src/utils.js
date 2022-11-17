@@ -22,7 +22,7 @@ export const sendMessage = (
   successFunction,
   failureFunction
 ) => {
-  fetch(`http://localhost:3000` + path, {
+  fetch(`${process.env.SERVER} + ${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(msgObject),

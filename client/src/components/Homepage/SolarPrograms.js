@@ -14,7 +14,11 @@ const SolarPrograms = (props) => {
   const nm_graphic = selectTSML(w, nm_ver, nm_ver, nm_hor, nm_hor);
 
   return (
-    <CentralSection style={{ flexDirection: `${tileFlexDirection}` }}>
+    <CentralSection
+      style={{
+        flexDirection: `${tileFlexDirection}`,
+        margin: "1rem 0 2rem 0",
+      }}>
       <CentralTile
         style={{ width: `${tileWidth}`, justifyContent: "space-between" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>

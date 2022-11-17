@@ -17,4 +17,5 @@
   align-items: flex-end;
   width: 100%;
   max-width: var(--centralSpanWidth);
+  margin-bottom: 2rem;
 }

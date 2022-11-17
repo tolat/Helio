@@ -25,7 +25,7 @@ const SolarSolutions = (props) => {
         <div style={{ maxWidth: "90rem" }}>
           <div
             className={styles.header}
-            style={{ color: "white", fontSize: "2.5rem" }}>
+            style={{ color: "white", fontSize: "2.5rem", marginTop: "2rem" }}>
             Solar <b>Solutions</b>{" "}
           </div>
           <div

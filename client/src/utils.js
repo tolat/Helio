@@ -22,7 +22,7 @@ export const sendMessage = (
   successFunction,
   failureFunction
 ) => {
-  fetch(`${process.env.SERVER} + ${path}`, {
+  fetch(`${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(msgObject),

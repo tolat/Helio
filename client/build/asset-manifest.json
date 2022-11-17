@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.a62f85e3.css",
-    "main.js": "/static/js/main.68cb80fa.js",
+    "main.js": "/static/js/main.8e5b6768.js",
     "static/js/787.4b0d58d8.chunk.js": "/static/js/787.4b0d58d8.chunk.js",
     "static/media/solar_background3.png": "/static/media/solar_background3.695672eeb1531742ff74.png",
     "static/media/greener_homes_graphic.jpg": "/static/media/greener_homes_graphic.11e4d93010707f1aaa1c.jpg",
@@ -28,11 +28,11 @@
     "static/media/solaredge_logo.png": "/static/media/solaredge_logo.6ee6225f517fe893f807.png",
     "index.html": "/index.html",
     "main.a62f85e3.css.map": "/static/css/main.a62f85e3.css.map",
-    "main.68cb80fa.js.map": "/static/js/main.68cb80fa.js.map",
+    "main.8e5b6768.js.map": "/static/js/main.8e5b6768.js.map",
     "787.4b0d58d8.chunk.js.map": "/static/js/787.4b0d58d8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a62f85e3.css",
-    "static/js/main.68cb80fa.js"
+    "static/js/main.8e5b6768.js"
   ]
 }

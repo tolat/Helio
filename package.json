@@ -5,7 +5,6 @@
     "nodemailer": "^6.8.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "build": "npm i; (cd client && npm i)"
+    "start": "node server.js"
   }
 }

@@ -38,11 +38,21 @@ export const sendMessage = (
     });
 };
 
-export const showFlash = (id, header, message, color) => {
-  document.getElementById(`${id}_flashContainer`).style.backgroundColor = color;
+export const showFlash = (
+  id,
+  header,
+  message,
+  backgroundColor,
+  headerColor,
+  textColor
+) => {
+  document.getElementById(`${id}_flashContainer`).style.backgroundColor =
+    backgroundColor;
   document.getElementById(`${id}_header`).innerText = header;
   document.getElementById(`${id}_message`).innerText = message;
   document.getElementById(`${id}_masterContainer`).style.marginTop = "2rem";
+  document.getElementById(`${id}_header`).style.color = headerColor;
+  document.getElementById(`${id}_message`).style.color = textColor;
 };
 
 export const closeFlash = (id) => {

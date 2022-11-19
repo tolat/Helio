@@ -1,5 +1,5 @@
 import styles from "./Flash.module.css";
-import closeButton from "../../../images/close_button.png";
+import closeButton from "../../../images/close_button_light.png";
 import { closeFlash } from "../../../utils";
 
 const Flash = (props) => {

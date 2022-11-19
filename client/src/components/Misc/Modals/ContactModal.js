@@ -50,7 +50,9 @@ const ContactModal = (props) => {
         "appFlash",
         "Message successfully sent!",
         "Thanks for getting in touch. We will do our best to respond to your inquiry within 3 business days.",
-        "rgb(192,254,197)"
+        "rgb(55,55,55)",
+        "white",
+        "white"
       );
 
       setTimeout(() => {

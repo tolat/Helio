@@ -4,13 +4,14 @@ import GeneralInput from "../../GeneralUI/GeneralInput";
 import GeneralButton from "../../GeneralUI/GeneralButton";
 import { selectTSML, showFlash, closeFlash, sendMessage } from "../../../utils";
 import modalStyles from "../../GeneralUI/Modal.module.css";
+import Spinner from "react-bootstrap/Spinner";
 
 import energy_icon from "../../../images/energy_icon.png";
 import roof_icon from "../../../images/roof_icon.png";
 import at_icon from "../../../images/at_icon.png";
 import solar_icon from "../../../images/solar_icon.png";
 import sendmail_icon from "../../../images/sendmail_icon.png";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 const FreeQuoteModal = (props) => {
   const w = props.viewportWidth;
@@ -24,6 +25,8 @@ const FreeQuoteModal = (props) => {
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
   const scrollMaskImage = selectTSML(w, "", "none", "none", "none");
   const equipPrefMarginBottom = selectTSML(w, "10rem", "", "", "");
+
+  const [spinnerOpacity, setSpinnerOpacity] = useState("0");
 
   const formFields = [
     "userAddress",
@@ -64,6 +67,8 @@ const FreeQuoteModal = (props) => {
     const resetSuccess = () => {
       clearModal();
 
+      setSpinnerOpacity("0");
+
       showFlash(
         "appFlash",
         "Quote sent successfully!",
@@ -77,6 +82,7 @@ const FreeQuoteModal = (props) => {
     };
 
     const resetFailure = (error) => {
+      setSpinnerOpacity("0");
       showFlash(
         "appFlash",
         "There was an error sending your request.",
@@ -85,6 +91,7 @@ const FreeQuoteModal = (props) => {
       );
     };
 
+    setSpinnerOpacity("1");
     try {
       sendMessage(formData, "/quote", resetSuccess, resetFailure);
     } catch (e) {
@@ -122,6 +129,7 @@ const FreeQuoteModal = (props) => {
             style={{ maxWidth: "100%" }}
             placeholder="Address"
             inputRef={formRefs.userAddress}
+            required={true}
           />
           <div
             style={{
@@ -134,18 +142,21 @@ const FreeQuoteModal = (props) => {
               type="text"
               placeholder="Name"
               inputRef={formRefs.userName}
+              required={true}
             />
             <GeneralInput
               label="phone number"
               type="number"
               placeholder="Phone"
               inputRef={formRefs.userPhone}
+              required={true}
             />
             <GeneralInput
               label="email address"
               type="email"
               placeholder="Email"
               inputRef={formRefs.userEmail}
+              required={true}
             />
           </div>
         </div>
@@ -176,18 +187,21 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="Asphalt, Metal, etc. "
                 inputRef={formRefs.roofMaterial}
+                required={true}
               />
               <GeneralInput
                 label="Roof Age"
                 type="text"
                 placeholder="Num. Years"
                 inputRef={formRefs.roofAge}
+                required={true}
               />
               <GeneralInput
                 label="Roof Pitch"
                 type="text"
                 placeholder="Flat, Mid, Steep?"
                 inputRef={formRefs.roofPitch}
+                required={true}
               />
             </div>
           </div>
@@ -211,6 +225,7 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="0%-100% "
                 inputRef={formRefs.targetOffset}
+                required={true}
               />
               <GeneralInput
                 label="Average Hydro Bill"
@@ -218,6 +233,7 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="Dollar Amount"
                 inputRef={formRefs.averageBill}
+                required={true}
               />
               <GeneralInput
                 label="Billing Cycle"
@@ -225,6 +241,7 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="1 mo, 2 mo, etc."
                 inputRef={formRefs.billingCycle}
+                required={true}
               />
             </div>
           </div>
@@ -250,6 +267,7 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="Off-Grid or Grid-Tied"
                 inputRef={formRefs.systemType}
+                required={true}
               />
               <GeneralInput
                 label="Battery Backup"
@@ -257,6 +275,7 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="Yes/No"
                 inputRef={formRefs.batteryBackup}
+                required={true}
               />
               <GeneralInput
                 label="Budget"
@@ -264,33 +283,49 @@ const FreeQuoteModal = (props) => {
                 style={{ maxWidth: "100%" }}
                 placeholder="Dollar Range"
                 inputRef={formRefs.budget}
+                required={true}
               />
             </div>
           </div>
         </div>
       </form>
 
-      <GeneralButton
+      <div
         style={{
-          backgroundColor: "transparent",
-          boxShadow: "none",
-          fontSize: "1.6rem",
-          width: "94%",
-          alignSelf: "flex-start",
           display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          margin: "0 0 3rem 0",
-        }}
-        onClick={handleSubmit}>
-        <div>Submit Quote Request</div>
+          justifyContent: "space-between",
+          width: "100%",
+          padding: "0 3rem 0 3rem",
+        }}>
+        <div style={{ marginLeft: "2rem", opacity: spinnerOpacity }}>
+          <Spinner
+            animation="border"
+            role="status"
+            style={{ width: "2.5rem", height: "2.5rem" }}
+          />
+        </div>
+        <GeneralButton
+          style={{
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            fontSize: "1.6rem",
+            width: "94%",
+            alignSelf: "flex-start",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            margin: "0 0 3rem 0",
+          }}
+          onClick={handleSubmit}>
+          <div>Submit Quote Request</div>
 
-        <img
-          style={{ marginLeft: "0.6rem", height: "2.3rem" }}
-          src={sendmail_icon}
-          alt="send icon"
-        />
-      </GeneralButton>
+          <img
+            style={{ marginLeft: "0.6rem", height: "2.3rem" }}
+            src={sendmail_icon}
+            alt="send icon"
+          />
+        </GeneralButton>
+      </div>
     </Modal>
   );
 };

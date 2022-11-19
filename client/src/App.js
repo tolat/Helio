@@ -13,6 +13,7 @@ import { useState } from "react";
 import { selectTSML } from "./utils";
 import ContactModal from "./components/Misc/Modals/ContactModal";
 import Flash from "./components/Misc/Flash/Flash";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const { width } = useWindowSize();

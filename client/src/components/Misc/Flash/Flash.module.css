@@ -4,9 +4,10 @@
 
 .message {
   font-size: 1rem;
-  color: rgb(92, 92, 92);
+  color: rgb(95, 95, 95);
   max-width: 80%;
   line-height: 1.3rem;
+  padding: 0.5rem;
 }
 
 .button {

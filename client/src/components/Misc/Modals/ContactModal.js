@@ -3,8 +3,9 @@ import GeneralInput from "../../GeneralUI/GeneralInput";
 import modalStyles from "../../GeneralUI/Modal.module.css";
 import styles from "./ContactModal.module.css";
 import { selectTSML, sendMessage, showFlash, closeFlash } from "../../../utils";
-import { useRef } from "react";
+import React, { useState, useRef } from "react";
 import Modal from "../../GeneralUI/Modal";
+import Spinner from "react-bootstrap/Spinner";
 
 import at_icon from "../../../images/at_icon.png";
 import msg_icon from "../../../images/message_icon.png";
@@ -19,6 +20,8 @@ const ContactModal = (props) => {
   const quoteModalWidth = selectTSML(w, "100%", "", "", "");
   const quoteModalHeight = selectTSML(w, "100%", "", "", "");
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
+
+  const [spinnerOpacity, setSpinnerOpacity] = useState("0");
 
   const userEmailRef = useRef();
   const userNameRef = useRef();
@@ -41,11 +44,13 @@ const ContactModal = (props) => {
       userPhoneRef.current.value = "";
       userMessageRef.current.value = "";
 
+      setSpinnerOpacity("0");
+
       showFlash(
         "appFlash",
         "Message successfully sent!",
         "Thanks for getting in touch. We will do our best to respond to your inquiry within 3 business days.",
-        "rgb(164,231,169)"
+        "rgb(192,254,197)"
       );
 
       setTimeout(() => {
@@ -54,6 +59,7 @@ const ContactModal = (props) => {
     };
 
     const resetFailure = (error) => {
+      setSpinnerOpacity("0");
       showFlash(
         "appFlash",
         "There was an error sending your message.",
@@ -62,7 +68,12 @@ const ContactModal = (props) => {
       );
     };
 
-    sendMessage(formData, "/message", resetSuccess, resetFailure);
+    setSpinnerOpacity("1");
+    try {
+      sendMessage(formData, "/quote", resetSuccess, resetFailure);
+    } catch (e) {
+      resetFailure(e);
+    }
   };
 
   return (
@@ -102,6 +113,7 @@ const ContactModal = (props) => {
                 style={{ maxWidth: inputWidth }}
                 placeholder="Name"
                 inputRef={userNameRef}
+                required={true}
               />
               <GeneralInput
                 label="Phone Number"
@@ -116,6 +128,7 @@ const ContactModal = (props) => {
                 style={{ maxWidth: inputWidth }}
                 placeholder="Email"
                 inputRef={userEmailRef}
+                required={true}
               />
             </div>
           </div>
@@ -134,29 +147,44 @@ const ContactModal = (props) => {
               ref={userMessageRef}
               className={styles.textArea}
               rows="8"
+              required
             />
           </div>
         </div>
 
-        <GeneralButton
+        <div
           style={{
-            backgroundColor: "transparent",
-            boxShadow: "none",
-            fontSize: "1.6rem",
-            width: "98%",
-            alignSelf: "flex-start",
             display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
           }}>
-          <div>Send Message</div>
+          <div style={{ marginLeft: "2rem", opacity: spinnerOpacity }}>
+            <Spinner
+              animation="border"
+              role="status"
+              style={{ width: "2.5rem", height: "2.5rem" }}
+            />
+          </div>
+          <GeneralButton
+            style={{
+              backgroundColor: "transparent",
+              boxShadow: "none",
+              fontSize: "1.6rem",
+              width: "98%",
+              alignSelf: "flex-start",
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}>
+            <div>Send Message</div>
 
-          <img
-            style={{ marginLeft: "0.6rem", height: "2.3rem" }}
-            src={sendmail_icon}
-            alt="send icon"
-          />
-        </GeneralButton>
+            <img
+              style={{ marginLeft: "0.6rem", height: "2.3rem" }}
+              src={sendmail_icon}
+              alt="send icon"
+            />
+          </GeneralButton>
+        </div>
       </form>
     </Modal>
   );

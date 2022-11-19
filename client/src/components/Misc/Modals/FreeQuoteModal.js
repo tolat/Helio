@@ -10,7 +10,7 @@ import roof_icon from "../../../images/roof_icon.png";
 import at_icon from "../../../images/at_icon.png";
 import solar_icon from "../../../images/solar_icon.png";
 import sendmail_icon from "../../../images/sendmail_icon.png";
-import { useState } from "react";
+import { useRef } from "react";
 
 const FreeQuoteModal = (props) => {
   const w = props.viewportWidth;
@@ -25,95 +25,41 @@ const FreeQuoteModal = (props) => {
   const scrollMaskImage = selectTSML(w, "", "none", "none", "none");
   const equipPrefMarginBottom = selectTSML(w, "10rem", "", "", "");
 
-  const [userAddress, setUserAddress] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userName, setUserName] = useState("");
-  const [roofMaterial, setRoofMaterial] = useState("");
-  const [roofAge, setRoofAge] = useState("");
-  const [roofPitch, setRoofPitch] = useState("");
-  const [targetOffset, setTargetOffset] = useState("");
-  const [averageBill, setAverageBill] = useState("");
-  const [billingCycle, setBillingCycle] = useState("");
-  const [systemType, setSystemType] = useState("");
-  const [batteryBackup, setBatteryBackup] = useState("");
-  const [budget, setBudget] = useState("");
+  const formFields = [
+    "userAddress",
+    "userEmail",
+    "userPhone",
+    "userName",
+    "roofMaterial",
+    "roofAge",
+    "roofPitch",
+    "targetOffset",
+    "averageBill",
+    "billingCycle",
+    "systemType",
+    "batteryBackup",
+    "budget",
+  ];
 
-  const addressChangedHandler = (event) => {
-    setUserAddress(event.target.value);
-  };
-  const emailChangedHandler = (event) => {
-    setUserEmail(event.target.value);
-  };
-  const phoneChangedHandler = (event) => {
-    setUserPhone(event.target.value);
-  };
-  const nameChangedHandler = (event) => {
-    setUserName(event.target.value);
-  };
-  const roofMaterialChangedHandler = (event) => {
-    setRoofMaterial(event.target.value);
-  };
-  const roofAgeChangedHandler = (event) => {
-    setRoofAge(event.target.value);
-  };
-  const roofPitcChangedhHandler = (event) => {
-    setRoofPitch(event.target.value);
-  };
-  const targetOffsetChangedHandler = (event) => {
-    setTargetOffset(event.target.value);
-  };
-  const averageBillChangedHandler = (event) => {
-    setAverageBill(event.target.value);
-  };
-  const billingCycleChangedHandler = (event) => {
-    setBillingCycle(event.target.value);
-  };
-  const systemTypeChangedHandler = (event) => {
-    setSystemType(event.target.value);
-  };
-  const batterBackupChangedHandler = (event) => {
-    setBatteryBackup(event.target.value);
-  };
-  const budgetChangedHandler = (event) => {
-    setBudget(event.target.value);
-  };
+  const formRefs = {};
+  for (let field of formFields) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    formRefs[field] = useRef();
+  }
 
   const clearModal = () => {
-    setUserAddress("");
-    setUserName("");
-    setUserPhone("");
-    setUserEmail("");
-    setRoofMaterial("");
-    setRoofAge("");
-    setRoofPitch("");
-    setTargetOffset("");
-    setAverageBill("");
-    setBillingCycle("");
-    setSystemType("");
-    setBatteryBackup("");
-    setBudget("");
+    for (let field of formFields) {
+      formRefs[field].current.value = "";
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const formData = {
-      type: "Quote",
-      userAddress,
-      userName,
-      userPhone,
-      userEmail,
-      roofMaterial,
-      roofAge,
-      roofPitch,
-      targetOffset,
-      averageBill,
-      billingCycle,
-      systemType,
-      batteryBackup,
-      budget,
-    };
+    const formData = {};
+    for (let field of formFields) {
+      formData[field] = formRefs[field].current.value;
+    }
 
     const resetSuccess = () => {
       clearModal();
@@ -175,8 +121,7 @@ const FreeQuoteModal = (props) => {
             type="text"
             style={{ maxWidth: "100%" }}
             placeholder="Address"
-            value={userAddress}
-            onChange={addressChangedHandler}
+            inputRef={formRefs.userAddress}
           />
           <div
             style={{
@@ -188,22 +133,19 @@ const FreeQuoteModal = (props) => {
               label="your name"
               type="text"
               placeholder="Name"
-              value={userName}
-              onChange={nameChangedHandler}
+              inputRef={formRefs.userName}
             />
             <GeneralInput
               label="phone number"
               type="number"
               placeholder="Phone"
-              value={userPhone}
-              onChange={phoneChangedHandler}
+              inputRef={formRefs.userPhone}
             />
             <GeneralInput
               label="email address"
               type="email"
               placeholder="Email"
-              value={userEmail}
-              onChange={emailChangedHandler}
+              inputRef={formRefs.userEmail}
             />
           </div>
         </div>
@@ -233,22 +175,19 @@ const FreeQuoteModal = (props) => {
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Asphalt, Metal, etc. "
-                value={roofMaterial}
-                onChange={roofMaterialChangedHandler}
+                inputRef={formRefs.roofMaterial}
               />
               <GeneralInput
                 label="Roof Age"
                 type="text"
                 placeholder="Num. Years"
-                value={roofAge}
-                onChange={roofAgeChangedHandler}
+                inputRef={formRefs.roofAge}
               />
               <GeneralInput
                 label="Roof Pitch"
                 type="text"
                 placeholder="Flat, Mid, Steep?"
-                value={roofPitch}
-                onChange={roofPitcChangedhHandler}
+                inputRef={formRefs.roofPitch}
               />
             </div>
           </div>
@@ -271,24 +210,21 @@ const FreeQuoteModal = (props) => {
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="0%-100% "
-                value={targetOffset}
-                onChange={targetOffsetChangedHandler}
+                inputRef={formRefs.targetOffset}
               />
               <GeneralInput
                 label="Average Hydro Bill"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Dollar Amount"
-                value={averageBill}
-                onChange={averageBillChangedHandler}
+                inputRef={formRefs.averageBill}
               />
               <GeneralInput
                 label="Billing Cycle"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="1 mo, 2 mo, etc."
-                value={billingCycle}
-                onChange={billingCycleChangedHandler}
+                inputRef={formRefs.billingCycle}
               />
             </div>
           </div>
@@ -313,24 +249,21 @@ const FreeQuoteModal = (props) => {
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Off-Grid or Grid-Tied"
-                value={systemType}
-                onChange={systemTypeChangedHandler}
+                inputRef={formRefs.systemType}
               />
               <GeneralInput
                 label="Battery Backup"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Yes/No"
-                value={batteryBackup}
-                onChange={batterBackupChangedHandler}
+                inputRef={formRefs.batteryBackup}
               />
               <GeneralInput
                 label="Budget"
                 type="text"
                 style={{ maxWidth: "100%" }}
                 placeholder="Dollar Range"
-                value={budget}
-                onChange={budgetChangedHandler}
+                inputRef={formRefs.budget}
               />
             </div>
           </div>

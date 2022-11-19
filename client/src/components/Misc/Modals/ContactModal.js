@@ -3,7 +3,7 @@ import GeneralInput from "../../GeneralUI/GeneralInput";
 import modalStyles from "../../GeneralUI/Modal.module.css";
 import styles from "./ContactModal.module.css";
 import { selectTSML, sendMessage, showFlash, closeFlash } from "../../../utils";
-import { useState } from "react";
+import { useRef } from "react";
 import Modal from "../../GeneralUI/Modal";
 
 import at_icon from "../../../images/at_icon.png";
@@ -20,39 +20,26 @@ const ContactModal = (props) => {
   const quoteModalHeight = selectTSML(w, "100%", "", "", "");
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
 
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userMessage, setUserMessage] = useState("");
-
-  const emailChangedHandler = (event) => {
-    setUserEmail(event.target.value);
-  };
-  const phoneChangedHandler = (event) => {
-    setUserPhone(event.target.value);
-  };
-  const nameChangedHandler = (event) => {
-    setUserName(event.target.value);
-  };
-  const messageChangedHandler = (event) => {
-    setUserMessage(event.target.value);
-  };
+  const userEmailRef = useRef();
+  const userNameRef = useRef();
+  const userPhoneRef = useRef();
+  const userMessageRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = {
-      name: userName,
-      phone: userPhone,
-      email: userEmail,
-      message: userMessage,
+      name: userNameRef.current.value,
+      phone: userPhoneRef.current.value,
+      email: userEmailRef.current.value,
+      message: userMessageRef.current.value,
     };
 
     const resetSuccess = () => {
-      setUserName("");
-      setUserPhone("");
-      setUserEmail("");
-      setUserMessage("");
+      userEmailRef.current.value = "";
+      userNameRef.current.value = "";
+      userPhoneRef.current.value = "";
+      userMessageRef.current.value = "";
 
       showFlash(
         "appFlash",
@@ -114,24 +101,21 @@ const ContactModal = (props) => {
                 type="text"
                 style={{ maxWidth: inputWidth }}
                 placeholder="Name"
-                onChange={nameChangedHandler}
-                value={userName}
+                inputRef={userNameRef}
               />
               <GeneralInput
                 label="Phone Number"
                 type="text"
                 style={{ maxWidth: inputWidth }}
                 placeholder="Number"
-                onChange={phoneChangedHandler}
-                value={userPhone}
+                inputRef={userPhoneRef}
               />
               <GeneralInput
                 label="Email Address"
                 type="email"
                 style={{ maxWidth: inputWidth }}
                 placeholder="Email"
-                onChange={emailChangedHandler}
-                value={userEmail}
+                inputRef={userEmailRef}
               />
             </div>
           </div>
@@ -147,8 +131,7 @@ const ContactModal = (props) => {
               <div>Message</div>
             </div>
             <textarea
-              onChange={messageChangedHandler}
-              value={userMessage}
+              ref={userMessageRef}
               className={styles.textArea}
               rows="8"
             />

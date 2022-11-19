@@ -11,6 +11,7 @@ const GeneralInput = (props) => {
         style={props.inputStyle}
         onChange={props.onChange}
         value={props.value}
+        ref={props.inputRef}
       />
       {props.children}
     </div>

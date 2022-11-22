@@ -24,8 +24,10 @@ const FreeQuoteModal = (props) => {
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
   const scrollMaskImage = selectTSML(w, "", "none", "none", "none");
   const equipPrefMarginBottom = selectTSML(w, "10rem", "", "", "");
+  const buttonFontSize = selectTSML(w, "1.4rem", "", "", "");
 
-  const [spinnerOpacity, setSpinnerOpacity] = useState("0");
+  const [spinnerDisplay, setSpinnerDisplay] = useState("none");
+  const [iconDisplay, setIconDisplay] = useState("block");
 
   const formFields = [
     "userAddress",
@@ -58,6 +60,10 @@ const FreeQuoteModal = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (document.getElementById("quoteModalSpinner").style.display == "block") {
+      return;
+    }
+
     const formData = {};
     for (let field of formFields) {
       formData[field] = formRefs[field].current.value;
@@ -66,7 +72,8 @@ const FreeQuoteModal = (props) => {
     const resetSuccess = () => {
       clearModal();
 
-      setSpinnerOpacity("0");
+      setSpinnerDisplay("none");
+      setIconDisplay("block");
 
       showFlash(
         "appFlash",
@@ -83,7 +90,9 @@ const FreeQuoteModal = (props) => {
     };
 
     const resetFailure = (error) => {
-      setSpinnerOpacity("0");
+      setSpinnerDisplay("none");
+      setIconDisplay("block");
+
       showFlash(
         "appFlash",
         "There was an error sending your request.",
@@ -92,7 +101,9 @@ const FreeQuoteModal = (props) => {
       );
     };
 
-    setSpinnerOpacity("1");
+    setSpinnerDisplay("block");
+    setIconDisplay("none");
+
     try {
       sendMessage(formData, "/quote", resetSuccess, resetFailure);
     } catch (e) {
@@ -290,39 +301,39 @@ const FreeQuoteModal = (props) => {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-          }}>
-          <div style={{ marginLeft: "2rem", opacity: spinnerOpacity }}>
-            <Spinner
-              animation="border"
-              role="status"
-              style={{ width: "2.5rem", height: "2.5rem" }}
-            />
-          </div>
-          <GeneralButton
-            style={{
-              backgroundColor: "transparent",
-              boxShadow: "none",
-              fontSize: "1.6rem",
-              width: "94%",
-              alignSelf: "flex-start",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}>
-            <div>Submit Quote Request</div>
 
-            <img
-              style={{ marginLeft: "0.6rem", height: "2.3rem" }}
-              src={sendmail_icon}
-              alt="send icon"
-            />
-          </GeneralButton>
-        </div>
+        <GeneralButton
+          style={{
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            fontSize: "1.6rem",
+            alignSelf: "flex-start",
+            display: "flex",
+            width: "100%",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}>
+          <div style={{ fontSize: buttonFontSize }}>Submit Quote Request</div>
+
+          <img
+            style={{
+              marginLeft: "0.6rem",
+              height: "2.3rem",
+              display: iconDisplay,
+            }}
+            src={sendmail_icon}
+            alt="send icon"
+          />
+          <div
+            id="quoteModalSpinner"
+            style={{
+              marginLeft: "1rem",
+              display: spinnerDisplay,
+              zoom: "0.8",
+            }}>
+            <Spinner animation="border" role="status" />
+          </div>
+        </GeneralButton>
       </form>
     </Modal>
   );

@@ -20,8 +20,10 @@ const ContactModal = (props) => {
   const quoteModalWidth = selectTSML(w, "100%", "", "", "");
   const quoteModalHeight = selectTSML(w, "100%", "", "", "");
   const quoteModalMaxHeight = selectTSML(w, "", "80%", "80%", "80%");
+  const buttonFontSize = selectTSML(w, "1.4rem", "", "", "");
 
-  const [spinnerOpacity, setSpinnerOpacity] = useState("0");
+  const [spinnerDisplay, setSpinnerDisplay] = useState("none");
+  const [iconDisplay, setIconDisplay] = useState("block");
 
   const userEmailRef = useRef();
   const userNameRef = useRef();
@@ -30,6 +32,12 @@ const ContactModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (
+      document.getElementById("contactModalSpinner").style.display == "block"
+    ) {
+      return;
+    }
 
     const formData = {
       name: userNameRef.current.value,
@@ -44,7 +52,8 @@ const ContactModal = (props) => {
       userPhoneRef.current.value = "";
       userMessageRef.current.value = "";
 
-      setSpinnerOpacity("0");
+      setSpinnerDisplay("none");
+      setIconDisplay("block");
 
       showFlash(
         "appFlash",
@@ -61,7 +70,9 @@ const ContactModal = (props) => {
     };
 
     const resetFailure = (error) => {
-      setSpinnerOpacity("0");
+      setSpinnerDisplay("none");
+      setIconDisplay("block");
+
       showFlash(
         "appFlash",
         "There was an error sending your message.",
@@ -70,7 +81,9 @@ const ContactModal = (props) => {
       );
     };
 
-    setSpinnerOpacity("1");
+    setSpinnerDisplay("block");
+    setIconDisplay("none");
+
     try {
       sendMessage(formData, "/quote", resetSuccess, resetFailure);
     } catch (e) {
@@ -154,39 +167,34 @@ const ContactModal = (props) => {
           </div>
         </div>
 
-        <div
+        <GeneralButton
           style={{
-            display: "flex",
-            justifyContent: "space-between",
+            backgroundColor: "transparent",
+            boxShadow: "none",
+            fontSize: "1.6rem",
             width: "100%",
+            alignSelf: "flex-start",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
           }}>
-          <div style={{ marginLeft: "2rem", opacity: spinnerOpacity }}>
-            <Spinner
-              animation="border"
-              role="status"
-              style={{ width: "2.5rem", height: "2.5rem" }}
-            />
-          </div>
-          <GeneralButton
-            style={{
-              backgroundColor: "transparent",
-              boxShadow: "none",
-              fontSize: "1.6rem",
-              width: "98%",
-              alignSelf: "flex-start",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}>
-            <div>Send Message</div>
+          <div style={{ fontSize: buttonFontSize }}>Send Message</div>
 
-            <img
-              style={{ marginLeft: "0.6rem", height: "2.3rem" }}
-              src={sendmail_icon}
-              alt="send icon"
-            />
-          </GeneralButton>
-        </div>
+          <img
+            style={{
+              marginLeft: "0.6rem",
+              height: "2.3rem",
+              display: iconDisplay,
+            }}
+            src={sendmail_icon}
+            alt="send icon"
+          />
+          <div
+            id="contactModalSpinner"
+            style={{ marginLeft: "2rem", display: spinnerDisplay }}>
+            <Spinner animation="border" role="status" />
+          </div>
+        </GeneralButton>
       </form>
     </Modal>
   );

@@ -56,5 +56,5 @@ export const showFlash = (
 };
 
 export const closeFlash = (id) => {
-  document.getElementById(`${id}_masterContainer`).style.marginTop = "-10rem";
+  document.getElementById(`${id}_masterContainer`).style.marginTop = "-20rem";
 };

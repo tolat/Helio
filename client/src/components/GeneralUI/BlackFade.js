@@ -8,6 +8,7 @@ const BlackFade = (props) => {
         style={{
           backgroundImage: `url(".${props.backgroundImage}")`,
           opacity: `${props.backgroundOpacity}`,
+          backgroundAttachment: props.backgroundAttachment || "local",
         }}
       />
       <div className={styles.childrenContainer}>{props.children}</div>

@@ -1,5 +1,7 @@
 .text {
   margin: 3rem 3rem 0 0;
+  border-bottom: 2px solid white;
+  padding-bottom: 2rem;
 }
 
 .nabcep {

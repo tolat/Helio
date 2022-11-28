@@ -15,7 +15,7 @@ code {
 
 :root {
   --navBarHeight: 7rem;
-  --centralSpanWidth: 100rem;
+  --centralSpanWidth: 90rem;
   --buttonSecondary: rgb(40, 134, 206);
   --smallWidthBreakpoint: 1100px;
 }
@@ -30,4 +30,9 @@ code {
 
 .noscroll {
   scrollbar-width: none; /* for Firefox */
+}
+
+.invertFilter {
+  filter: invert(1);
+  -webkit-filter: invert(1);
 }

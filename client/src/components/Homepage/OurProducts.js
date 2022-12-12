@@ -1,10 +1,18 @@
+import { useWindowSize } from "usehooks-ts";
 import CentralSection from "../GeneralUI/CentralSection";
 import ProductCarousel from "./ProductCarousel";
+import { selectTSML } from "../../utils";
 
 const OurProducts = (props) => {
+  const { width } = useWindowSize();
+  const zoom = selectTSML(width, "0.7", "0.8", "", "");
   return (
     <CentralSection
-      style={{ flexDirection: "column", borderBottom: "1px solid grey" }}>
+      style={{
+        zoom: zoom,
+        flexDirection: "column",
+        borderBottom: "1px solid grey",
+      }}>
       <div
         style={{
           width: "100%",

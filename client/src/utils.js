@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useWindowSize } from "usehooks-ts";
+
 // Function to use stately variables to update things that have changes based onsmall medium and alrge window sizes
 export const selectTSML = (width, tiny, sml, med, lrg) => {
   return width < process.env.REACT_APP_BREAKPOINT_T
@@ -57,4 +60,41 @@ export const showFlash = (
 
 export const closeFlash = (id) => {
   document.getElementById(`${id}_masterContainer`).style.marginTop = "-20rem";
+};
+
+export const useScrollPosition = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      setScrollPosition(window.pageYOffset);
+    };
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
+  return scrollPosition;
+};
+
+export const scrollToId = (Id, width) => {
+  if (!document.getElementById(Id)) {
+    console.log("id not found");
+    return;
+  }
+
+  const zoom =
+    width < process.env.REACT_APP_BREAKPOINT_S
+      ? 0.8
+      : width < process.env.REACT_APP_BREAKPOINT_T
+      ? 0.7
+      : 1;
+  const offset = document.getElementById(Id).getBoundingClientRect().top;
+
+  console.log(width, zoom, zoom * (offset - 80), offset - 80);
+
+  window.scrollTo({
+    top: zoom * (offset - 110),
+    behavior: "smooth",
+  });
 };

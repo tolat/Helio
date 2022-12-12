@@ -18,14 +18,18 @@ const SolarSolutions = (props) => {
   const tileWidth = selectTSML(w, "85%", "85%", "22%", "22%");
   const textAlign = selectTSML(w, "", "", "", "");
   const tileMinHeight = selectTSML(w, "", "", "24rem", "24rem");
+  const zoom = selectTSML(w, "0.7", "0.8", "", "");
 
   return (
-    <BlackFade backgroundImage={banner2} backgroundOpacity="0.65">
+    <BlackFade
+      backgroundImage={banner2}
+      backgroundOpacity="0.65"
+      backgroundAttachment="fixed">
       <FullWidthSection>
-        <div style={{ maxWidth: "90rem" }}>
+        <div style={{ maxWidth: "90rem", zoom: zoom }}>
           <div
             className={styles.header}
-            style={{ color: "white", fontSize: "2.5rem", marginTop: "2rem" }}>
+            style={{ color: "white", fontSize: "2.5rem", marginTop: "4rem" }}>
             Solar <b>Solutions</b>{" "}
           </div>
           <div
@@ -71,7 +75,11 @@ const SolarSolutions = (props) => {
             },
           ].map((data) => (
             <ProductTile
-              style={{ width: tileWidth, minHeight: tileMinHeight }}
+              style={{
+                width: tileWidth,
+                minHeight: tileMinHeight,
+                zoom: zoom,
+              }}
               key={data.id}
               header={data.h}
               img={data.img}

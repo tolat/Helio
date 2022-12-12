@@ -8,10 +8,12 @@ const Footer = (props) => {
   const w = props.viewportWidth;
   const flexDirection = selectTSML(w, "column", "column", "row", "row");
   const textMaxWidth = selectTSML(w, "", "", "32rem", "32rem");
+  const zoom = selectTSML(w, "0.7", "0.8", "", "");
   return (
     <FullWidthSection
       style={{
-        backgroundColor: "rgb(81,81,81)",
+        backgroundColor: "rgb(41,41,41)",
+        zoom: zoom,
       }}>
       <CentralSection>
         <div

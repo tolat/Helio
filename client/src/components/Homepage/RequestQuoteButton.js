@@ -6,6 +6,8 @@ import { selectTSML } from "../../utils";
 const RequestQuoteButton = (props) => {
   const w = props.viewportWidth;
 
+  const zoom = selectTSML(w, "0.7", "0.8", "", "");
+
   const clickHandler = () => {
     handleToggleModal(props.setModalVis);
   };
@@ -21,6 +23,7 @@ const RequestQuoteButton = (props) => {
           flexDirection: "row",
           justifyContent: "center",
           margin: "2rem 0 5rem 0",
+          zoom: zoom,
         }}>
         <GeneralButton
           style={{

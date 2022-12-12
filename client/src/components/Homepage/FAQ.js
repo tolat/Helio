@@ -6,9 +6,11 @@ import { selectTSML } from "../../utils";
 const FAQ = (props) => {
   const w = props.viewportWidth;
   const templateCols = selectTSML(w, "100%", "100%", "50% 50%", "50% 50%");
-
+  const zoom = selectTSML(w, "0.7", "0.8", "", "");
   return (
-    <CentralSection id="FAQsection" style={{ flexDirection: "column" }}>
+    <CentralSection
+      id="FAQsection"
+      style={{ zoom: zoom, flexDirection: "column" }}>
       <div
         style={{
           width: "100%",

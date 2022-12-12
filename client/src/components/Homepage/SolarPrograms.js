@@ -3,7 +3,7 @@ import CentralSection from "../GeneralUI/CentralSection";
 import styles from "./SolarPrograms.module.css";
 import { selectTSML } from "../../utils";
 
-import greenerhomes_graphic from "../../images/greener_homes_graphic.jpg";
+import greenerhomes_graphic from "../../images/greener_homes_graphic.png";
 import nm_hor from "../../images/netmetering_graphic2.png";
 import nm_ver from "../../images/netmetering_graphic_vertical.jpg";
 
@@ -12,16 +12,26 @@ const SolarPrograms = (props) => {
   const tileFlexDirection = selectTSML(w, "column", "column", "row", "row");
   const tileWidth = selectTSML(w, "100%", "100%", "50%", "50%");
   const nm_graphic = selectTSML(w, nm_ver, nm_ver, nm_hor, nm_hor);
+  const zoom = selectTSML(w, "0.7", "0.8", "", "");
 
   return (
     <CentralSection
       style={{
         flexDirection: `${tileFlexDirection}`,
-        margin: "1rem 0 2rem 0",
+        margin: "2rem 0 3rem 0",
+        zoom: zoom,
       }}>
       <CentralTile
-        style={{ width: `${tileWidth}`, justifyContent: "space-between" }}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        style={{
+          backgroundColor: "rgb(233, 247, 233)",
+          borderRadius: "3px",
+          width: `${tileWidth}`,
+          justifyContent: "space-between",
+          border: "1px solid lightgrey",
+        }}>
+        <div
+          id="solarProgramsSection"
+          style={{ display: "flex", flexDirection: "column" }}>
           <div className={styles.header}>
             Solar <b>Incentives</b>
           </div>
@@ -60,7 +70,10 @@ const SolarPrograms = (props) => {
         </div>
       </CentralTile>
       <CentralTile
-        style={{ width: `${tileWidth}`, justifyContent: "space-between" }}>
+        style={{
+          width: `${tileWidth}`,
+          justifyContent: "space-between",
+        }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div className={styles.header}>
             BC <b>Net Metering</b>

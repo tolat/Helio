@@ -5,15 +5,21 @@ import {
   selectTSML,
   handleToggleModal,
   useScrollPosition,
+  toggleNavDrawer,
 } from "../../../utils";
 import React from "react";
 import { useWindowSize } from "usehooks-ts";
+import { Turn as Hamburger } from "hamburger-react";
+import { useState } from "react";
 
 const NavBar = (props) => {
   const { width } = useWindowSize();
   const scrollPosition = useScrollPosition();
   const reduceNavbarHeigthOnScroll = 2;
   const initialBarHeight = 6;
+  const burgerMenuDisplay = selectTSML(width, "flex");
+  const buttonsDisplay = selectTSML(width, "none");
+  const [isOpen, setOpen] = useState(false);
 
   const onQuoteButtonClick = () => {
     handleToggleModal(props.setQuoteModalVis);
@@ -69,12 +75,21 @@ const NavBar = (props) => {
       <div className={styles.container}>
         <div className={styles.navbar} style={{ height: barHeight }}>
           <img className={styles.navbarLogo} src={logo} alt="company logo" />
-          <div className={styles.buttonContainer}>
+          <div
+            className={styles.buttonContainer}
+            style={{ display: buttonsDisplay }}>
             <NavButton text="Contact" onClick={onContactButtonClick} />
             <NavButton text="FAQ" onClick={onFAQButtonClick} />
             <NavButton text={quoteButtonText} onClick={onQuoteButtonClick} />
           </div>
         </div>
+      </div>
+      <div
+        className={`${styles.burgerButton} invertFilter`}
+        style={{ height: barHeight, display: burgerMenuDisplay }}
+        onClick={toggleNavDrawer}
+        id="burgerMenu">
+        <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
     </React.Fragment>
   );

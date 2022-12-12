@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2e271047.css",
-    "main.js": "/static/js/main.e8147bf7.js",
+    "main.css": "/static/css/main.cc461cd0.css",
+    "main.js": "/static/js/main.e92fcecf.js",
     "static/js/787.4b0d58d8.chunk.js": "/static/js/787.4b0d58d8.chunk.js",
     "static/media/solarspan1_medium.jpg": "/static/media/solarspan1_medium.e09e876bec9a2260c0c8.jpg",
     "static/media/solarspan1_mobile.jpg": "/static/media/solarspan1_mobile.f7b4331b7969b29288fb.jpg",
@@ -25,12 +25,12 @@
     "static/media/solaredge_logo.png": "/static/media/solaredge_logo.6ee6225f517fe893f807.png",
     "index.html": "/index.html",
     "static/media/expand.svg": "/static/media/expand.45a1a7112bf6255f362b38eaa86ac6de.svg",
-    "main.2e271047.css.map": "/static/css/main.2e271047.css.map",
-    "main.e8147bf7.js.map": "/static/js/main.e8147bf7.js.map",
+    "main.cc461cd0.css.map": "/static/css/main.cc461cd0.css.map",
+    "main.e92fcecf.js.map": "/static/js/main.e92fcecf.js.map",
     "787.4b0d58d8.chunk.js.map": "/static/js/787.4b0d58d8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e271047.css",
-    "static/js/main.e8147bf7.js"
+    "static/css/main.cc461cd0.css",
+    "static/js/main.e92fcecf.js"
   ]
 }

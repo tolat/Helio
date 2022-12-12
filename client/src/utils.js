@@ -94,7 +94,27 @@ export const scrollToId = (Id, width) => {
   console.log(width, zoom, zoom * (offset - 80), offset - 80);
 
   window.scrollTo({
-    top: zoom * (offset - 110),
+    top: zoom * 0.85 * (offset - 110),
     behavior: "smooth",
   });
+};
+
+export const toggleNavDrawer = () => {
+  let navDrawer = document.getElementById("navDrawer");
+  //let navDrawerBlackout = document.getElementById("navDrawerBlackout");
+  // eslint-disable-next-line
+  if (navDrawer.style.right != "0px") {
+    navDrawer.style.right = "0px";
+    //navDrawerBlackout.style.display = "block";
+  } else {
+    navDrawer.style.right = "-30rem";
+    //navDrawerBlackout.style.display = "none";
+  }
+};
+
+export const clickBurgerMenuIcon = (buttonActive = false) => {
+  document.getElementsByClassName("hamburger-react")[0].click();
+  if (!buttonActive) {
+    toggleNavDrawer();
+  }
 };

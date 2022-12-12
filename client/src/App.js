@@ -14,10 +14,10 @@ import { selectTSML } from "./utils";
 import ContactModal from "./components/Misc/Modals/ContactModal";
 import Flash from "./components/Misc/Flash/Flash";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavDrawer from "./components/Misc/Nav/NavDrawer";
 
 function App() {
   const { width } = useWindowSize();
-  const appZoom = selectTSML(width, "0.6", "0.8", "1", "1");
   const [quoteModalVis, setQuoteModalVis] = useState({ o: "0", v: "hidden" });
   const [contactModalVis, setContactModalVis] = useState({
     o: "0",
@@ -36,6 +36,10 @@ function App() {
         viewportWidth={width}
         modalVis={contactModalVis}
         setModalVis={setContactModalVis}
+      />
+      <NavDrawer
+        setContactModalVis={setContactModalVis}
+        setQuoteModalVis={setQuoteModalVis}
       />
       <div className={styles.App} id="App">
         <NavBar

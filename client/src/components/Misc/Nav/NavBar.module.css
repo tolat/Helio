@@ -38,3 +38,12 @@
   display: flex;
   justify-content: center;
 }
+
+.burgerButton {
+  display: unset;
+  position: fixed;
+  z-index: 12;
+  right: 1rem;
+  display: none;
+  align-items: center;
+}

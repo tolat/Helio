@@ -56,7 +56,7 @@ const Footer = (props) => {
           display: "flex",
           justifyContent: "center",
           color: "grey",
-          marginBottom: "1rem",
+          margin: "10rem 0 1rem 0",
         }}>
         <div>&copy;Copyright Lataritech 2022</div>
       </div>

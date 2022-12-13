@@ -52,10 +52,10 @@ function App() {
         <SolarSolutions viewportWidth={width} />
         <OurProducts />
         <FAQ viewportWidth={width} />
-        <RequestQuoteButton
+        {/* <RequestQuoteButton
           viewportWidth={width}
           setModalVis={setQuoteModalVis}
-        />
+        /> */}
         <Footer viewportWidth={width} />
       </div>
     </div>

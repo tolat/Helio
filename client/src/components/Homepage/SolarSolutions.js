@@ -6,24 +6,26 @@ import { selectTSML } from "../../utils";
 import styles from "./SolarSolutions.module.css";
 
 import banner2 from "../../images/solarspan1.jpg";
-import stringInvIcon from "../../images/panels_string.png";
-import microInvIcon from "../../images/panels_micro.png";
-import batteryIcon from "../../images/battery.png";
-import bluetoblackIcon from "../../images/bluetoblack.png";
+/* import stringInvIcon from "../../images/panels_string_black.png"; */
+import stringInvIcon from "../../images/strings_ground.jpeg";
+import microInvIcon from "../../images/microinverter_roof.jpeg";
+import batteryIcon from "../../images/encharge3.jpeg";
+import bluetoblackIcon from "../../images/blackpanels1.jpeg";
 
 const SolarSolutions = (props) => {
   const w = props.viewportWidth;
-  const tileDisplay = selectTSML(w, "grid", "grid", "flex", "flex");
+  const tileDisplay = selectTSML(w, "flex", "grid", "flex", "flex");
+  const tileFlexDirection = selectTSML(w, "column");
   const tileJustify = selectTSML(w, "center", "center", "", "");
   const tileWidth = selectTSML(w, "85%", "85%", "22%", "22%");
   const textAlign = selectTSML(w, "", "", "", "");
-  const tileMinHeight = selectTSML(w, "", "", "24rem", "24rem");
+  const tileImgHeight = selectTSML(w, "20rem", "20rem", "15rem", "15rem");
   const zoom = selectTSML(w, "0.7", "0.8", "", "");
 
   return (
     <BlackFade
       backgroundImage={banner2}
-      backgroundOpacity="0.65"
+      backgroundOpacity="0.5"
       backgroundAttachment="fixed">
       <FullWidthSection>
         <div style={{ maxWidth: "90rem", zoom: zoom }}>
@@ -45,6 +47,7 @@ const SolarSolutions = (props) => {
           className={styles.tileGridContainer}
           style={{
             display: tileDisplay,
+            flexDirection: tileFlexDirection,
             justifyItems: tileJustify,
             maxWidth: "90rem",
           }}>
@@ -77,9 +80,9 @@ const SolarSolutions = (props) => {
             <ProductTile
               style={{
                 width: tileWidth,
-                minHeight: tileMinHeight,
                 zoom: zoom,
               }}
+              imgHeight={tileImgHeight}
               key={data.id}
               header={data.h}
               img={data.img}

@@ -25,8 +25,8 @@ const FAQ = (props) => {
           gridTemplateColumns: templateCols,
           justifyContent: "center",
           width: "100%",
-          borderBottom: "1px solid grey",
-          paddingBottom: "4rem",
+
+          paddingBottom: "2rem",
         }}>
         {[
           {

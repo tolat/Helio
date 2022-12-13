@@ -20,7 +20,6 @@
 }
 
 .tileGridContainer {
-  color: white;
   display: flex;
   justify-content: space-around;
   margin-bottom: 7rem;

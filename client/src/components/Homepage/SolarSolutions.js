@@ -25,7 +25,7 @@ const SolarSolutions = (props) => {
   return (
     <BlackFade
       backgroundImage={banner2}
-      backgroundOpacity="0.5"
+      backgroundOpacity="0.65"
       backgroundAttachment="fixed">
       <FullWidthSection>
         <div style={{ maxWidth: "90rem", zoom: zoom }}>

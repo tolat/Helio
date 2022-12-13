@@ -30,12 +30,6 @@ const NavBar = (props) => {
   };
 
   const onFAQButtonClick = () => {
-    let zoom =
-      width < process.env.REACT_APP_BREAKPOINT_S
-        ? 0.8
-        : width < process.env.REACT_APP_BREAKPOINT_T
-        ? 0.7
-        : 1;
     let offsetPosition =
       document.getElementById("FAQsection").getBoundingClientRect().top - 130;
 
@@ -65,6 +59,7 @@ const NavBar = (props) => {
     )
   }rem`;
 
+  const quoteButtonBorder = scrollPosition > 50 ? "none" : "";
   return (
     <React.Fragment>
       <div
@@ -83,6 +78,7 @@ const NavBar = (props) => {
               text="Free Quote"
               onClick={onQuoteButtonClick}
               black={true}
+              style={{ border: quoteButtonBorder }}
             />
           </div>
         </div>

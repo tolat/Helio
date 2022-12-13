@@ -6,6 +6,7 @@ const NavButton = (props) => {
       className={`${styles.navButton} ${
         props.black ? styles.navButtonBlack : ""
       }`}
+      style={props.style}
       onClick={props.onClick}>
       <div>{props.text}</div>
     </div>

@@ -30,11 +30,14 @@ const NavBar = (props) => {
   };
 
   const onFAQButtonClick = () => {
-    let zoom = parseFloat(document.getElementById("App").style.zoom);
+    let zoom =
+      width < process.env.REACT_APP_BREAKPOINT_S
+        ? 0.8
+        : width < process.env.REACT_APP_BREAKPOINT_T
+        ? 0.7
+        : 1;
     let offsetPosition =
-      (document.getElementById("FAQsection").getBoundingClientRect().top -
-        130) *
-      zoom;
+      document.getElementById("FAQsection").getBoundingClientRect().top - 130;
 
     window.scrollTo({
       top: offsetPosition,
@@ -62,10 +65,6 @@ const NavBar = (props) => {
     )
   }rem`;
 
-  const w = props.viewportWidth;
-  const fq = "FREE QUOTE";
-  const quoteButtonText = selectTSML(w, "QUOTE", fq, fq, fq);
-
   return (
     <React.Fragment>
       <div
@@ -80,7 +79,11 @@ const NavBar = (props) => {
             style={{ display: buttonsDisplay }}>
             <NavButton text="Contact" onClick={onContactButtonClick} />
             <NavButton text="FAQ" onClick={onFAQButtonClick} />
-            <NavButton text={quoteButtonText} onClick={onQuoteButtonClick} />
+            <NavButton
+              text="Free Quote"
+              onClick={onQuoteButtonClick}
+              black={true}
+            />
           </div>
         </div>
       </div>

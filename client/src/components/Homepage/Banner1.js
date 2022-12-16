@@ -24,7 +24,7 @@ const Banner1 = (props) => {
     <FullWidthSection>
       <BlackFade
         backgroundImage={background}
-        backgroundOpacity="0.65"
+        backgroundOpacity="0.75"
         backgroundAttachment="fixed">
         <div
           className={styles.container}
